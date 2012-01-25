@@ -1434,7 +1434,8 @@ int GfxCIDFont::getNextChar(const char *s, int len, CharCode *code,
   if (ctu) {
     *uLen = ctu->mapToUnicode(cid, u, uSize);
   } else {
-    *uLen = 0;
+    u[0] = *code;
+    *uLen = 1;
   }
 
   // horizontal
