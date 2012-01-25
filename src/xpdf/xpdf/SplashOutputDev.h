@@ -187,7 +187,7 @@ public:
   void setFillColor(int r, int g, int b);
 
   // Get a font object for a Base-14 font, using the Latin-1 encoding.
-  SplashFont *getFont(GString *name, double *textMatA);
+  SplashFont *getFont(const GString *name, double *textMatA);
 
   SplashFont *getCurrentFont() { return font; }
 

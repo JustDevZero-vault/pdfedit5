@@ -2759,7 +2759,7 @@ void SplashOutputDev::setFillColor(int r, int g, int b) {
 #endif
 }
 
-SplashFont *SplashOutputDev::getFont(GString *name, double *textMatA) {
+SplashFont *SplashOutputDev::getFont(const GString *name, double *textMatA) {
   DisplayFontParam *dfp;
   Ref ref;
   SplashOutFontFileID *id;
