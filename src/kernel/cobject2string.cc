@@ -81,7 +81,7 @@ simpleValueFromString (const std::string& str, int& val)
 void
 simpleValueFromString (const std::string& str, double& val)
 {
-	shared_ptr<Object> ptrObj (xpdfObjFromString(str), xpdf::object_deleter());
+	boost::shared_ptr<Object> ptrObj (xpdfObjFromString(str), xpdf::object_deleter());
 	
 		assert (objReal == ptrObj->getType ());
 		if (objReal != ptrObj->getType() && objInt != ptrObj->getType())

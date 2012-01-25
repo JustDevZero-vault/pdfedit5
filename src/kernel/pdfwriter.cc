@@ -110,7 +110,7 @@ using namespace observer;
 		printf("Unsupported context.\n");
 		return;
 	}
-	shared_ptr<const IPdfWriter::ChangeContext> progressContext=
+	boost::shared_ptr<const IPdfWriter::ChangeContext> progressContext=
 		dynamic_pointer_cast<const IPdfWriter::ChangeContext>(context);
 	size_t total=progressContext->getScope()->total;
 	if(!started)
@@ -659,10 +659,10 @@ size_t OldStylePdfWriter::writeTrailer(const Object & trailer,const PrevSecInfo 
 	utilsPrintDbg(DBG_DBG, "Writing "<<subSectionTable.size()<<" subsections");
 	
 	// creates context for observers
-	shared_ptr<OperationScope> scope(new OperationScope());
+	boost::shared_ptr<OperationScope> scope(new OperationScope());
 	scope->total=subSectionTable.size();
 	scope->task=TRAILER;
-	shared_ptr<ChangeContext> context(new ChangeContext(scope));
+	boost::shared_ptr<ChangeContext> context(new ChangeContext(scope));
 
 	// writes all subsection
 	size_t index=1;
@@ -704,7 +704,7 @@ size_t OldStylePdfWriter::writeTrailer(const Object & trailer,const PrevSecInfo 
 		}
 		
 		// notifies observers
-		shared_ptr<OperationStep> newValue(new OperationStep());
+		boost::shared_ptr<OperationStep> newValue(new OperationStep());
 		newValue->currStep=index;
 		notifyObservers(newValue, context);
 	}
