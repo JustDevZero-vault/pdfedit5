@@ -2599,7 +2599,7 @@ void SplashOutputDev::setSoftMask(GfxState *state, const double *bbox,
 #if SPLASH_CMYK
   GfxCMYK cmyk;
 #endif
-  double lum, lum2;
+  double lum=0.0, lum2=0.0;
   int tx, ty, x, y;
 
   tx = transpGroupStack->tx;

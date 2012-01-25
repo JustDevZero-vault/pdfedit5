@@ -3150,7 +3150,7 @@ void Gfx::doShowText(const GString *s) {
   int wMode;
   double riseX, riseY;
   CharCode code;
-  Unicode u[8];
+  Unicode u[8] = {0};
   double x, y, dx, dy, dx2, dy2, curX, curY, tdx, tdy, lineX, lineY;
   double originX, originY, tOriginX, tOriginY;
   double oldCTM[6], newCTM[6];
