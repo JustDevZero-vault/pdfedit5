@@ -498,9 +498,9 @@ static bool isUnicodeSame(const Unicode *u1, int size1, const Unicode *u2, int s
 CharCode CharCodeToUnicode::mapFromUnicode(const Unicode *u, int size)const {
 	int i;
 	if (size == 1) {
-		for (i = 0; i < mapLen; ++i)
-			if (map[i] == *u)
-				return i;
+		for (CharCode j = 0; j < mapLen; ++j)
+			if (map[j] == *u)
+				return j;
 	}
 	for (i = 0; i < sMapLen; ++i) {
 		if (isUnicodeSame(u, size, sMap[i].u, sMap[i].len))
