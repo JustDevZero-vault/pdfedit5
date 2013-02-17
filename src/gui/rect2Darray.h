@@ -305,7 +305,7 @@ void RectArray<T>::myAppend ( const BBoxOfObjectOnPage<T> * item ) {
 		minY = std::min( minY, item->top() );
 		maxY = std::max( maxY, item->bottom() );
 	}
-	append( item );
+	this->append( item );
 }
 
 template <typename T>
@@ -461,7 +461,7 @@ void Rect2DArray<T>::myAppend( BBoxOfObjectOnPage<T> * bbox ) {
 	if (toAppend) {
 		current = new RectArray<T>();
 		current->myAppend( bbox );
-		append( current );
+		this->append( current );
 	}
 }
 
