@@ -718,6 +718,10 @@ simpleValueFromXpdfObj (const Object& obj, T val)
 	rp (obj,val);
 }
 
+template
+void
+simpleValueFromXpdfObj<pReal, double&> (const Object&, double& val);
+
 //
 // Special case for pNull
 //
