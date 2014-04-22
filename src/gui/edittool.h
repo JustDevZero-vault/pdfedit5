@@ -24,9 +24,9 @@
 #ifndef __EDITTOOL_H__
 #define __EDITTOOL_H__
 
-#include <qwidget.h>
-#include <qlineedit.h>
-#include <qstring.h>
+#include <QtWidgets/QWidget>
+#include <QtWidgets/QLineEdit>
+#include <QtCore/QString>
 
 class QResizeEvent;
 

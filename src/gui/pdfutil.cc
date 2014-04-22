@@ -34,8 +34,8 @@
 #include "util.h"
 #include <kernel/cobject.h>
 #include <kernel/factories.h>
-#include <qobject.h>
-#include <qstring.h>
+#include <QtCore/QObject>
+#include <QtCore/QString>
 #include <utils/debug.h>
 
 namespace util {

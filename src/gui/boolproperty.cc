@@ -29,9 +29,9 @@
 */
 
 #include "boolproperty.h"
-#include <qcheckbox.h>
+#include <QtWidgets/QCheckBox>
 #include <kernel/cobject.h>
-#include <qevent.h>
+#include <QtCore/QEvent>
 
 namespace gui {
 

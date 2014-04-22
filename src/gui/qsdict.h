@@ -25,7 +25,7 @@
 #define __QSDICT_H__
 
 #include "qsiproperty.h"
-#include <qstringlist.h>
+#include <QtCore/QStringList>
 #include <kernel/cobject.h>
 
 namespace gui {

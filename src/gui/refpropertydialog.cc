@@ -27,12 +27,12 @@
 */
 
 #include "refpropertydialog.h"
-#include <qlineedit.h>
-#include <qlabel.h>
-#include <qlayout.h>
-#include <qpushbutton.h>
-#include <qvalidator.h>
-#include <qstring.h>
+#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QLayout>
+#include <QtWidgets/QPushButton>
+#include <QtGui/QValidator>
+#include <QtCore/QString>
 #include "pdfutil.h"
 #include <kernel/cpdf.h>
 

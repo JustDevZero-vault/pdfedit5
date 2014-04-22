@@ -28,10 +28,10 @@
 
 #include "numbertool.h"
 #include "settings.h"
-#include <qvalidator.h>
+#include <QtGui/QValidator>
 #include <utils/debug.h>
-#include <qevent.h>
-#include <qtooltip.h>
+#include <QtCore/QEvent>
+#include <QtWidgets/QToolTip>
 
 namespace gui {
 

@@ -29,7 +29,7 @@
 #include <kernel/cannotation.h>
 #include <kernel/pdfoperators.h>
 #include <kernel/pdfwriter.h>
-#include <qmainwindow.h>
+#include <QtWidgets/QMainWindow>
 #include <qprogressbar.h>
 
 class QFont;

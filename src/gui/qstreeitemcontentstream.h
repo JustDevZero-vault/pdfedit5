@@ -24,7 +24,7 @@
 #ifndef __QSTREEITEMCONTENTSTREAM_H__
 #define __QSTREEITEMCONTENTSTREAM_H__
 
-#include <qobject.h>
+#include <QtCore/QObject>
 #include "qstreeitem.h"
 
 namespace gui {

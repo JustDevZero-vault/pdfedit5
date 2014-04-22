@@ -26,9 +26,9 @@
 
 #include "qtcompat.h"
 #include QSCROLLVIEW
-#include <qevent.h>
-#include <qpainter.h>
-#include <qcursor.h>
+#include <QtCore/QEvent>
+#include <QtGui/QPainter>
+#include <QtGui/QCursor>
 
 #include <boost/smart_ptr.hpp>
 

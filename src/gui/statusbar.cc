@@ -26,10 +26,10 @@
  @author Martin Petricek
 */
 #include "statusbar.h"
-#include <qlabel.h>
-#include <qtimer.h>
-#include <qlayout.h>
-#include <qcolor.h>
+#include <QtWidgets/QLabel>
+#include <QtCore/QTimer>
+#include <QtWidgets/QLayout>
+#include <QtGui/QColor>
 
 namespace gui {
 

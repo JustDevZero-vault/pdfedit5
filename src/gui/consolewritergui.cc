@@ -29,7 +29,7 @@
 #include "consolewritergui.h"
 #include "commandwindow.h"
 #include "util.h"
-#include <qstring.h>
+#include <QtCore/QString>
 #include <assert.h>
 
 namespace gui {

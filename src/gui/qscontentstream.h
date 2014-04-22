@@ -24,8 +24,8 @@
 #ifndef __QSCONTENTSTREAM_H__
 #define __QSCONTENTSTREAM_H__
 
-#include <qstring.h>
-#include <qobject.h>
+#include <QtCore/QString>
+#include <QtCore/QObject>
 #include <kernel/ccontentstream.h>
 #include "qscobject.h"
 

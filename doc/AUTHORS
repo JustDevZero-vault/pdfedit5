@@ -1,4 +1,8 @@
-PDFedit authors
+PDF5Edit author
+===============
+Daniel Ripoll       Update the code from Qt3 to Qt5 http://danielripoll.es/projects/pdfedit5
+
+Based on PDFedit, authors:
 ===============
 Michal Hocko
 Miroslav Jahoda

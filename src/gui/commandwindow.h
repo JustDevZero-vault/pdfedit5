@@ -25,7 +25,7 @@
 #define __COMMANDWINDOW_H__
 
 #include "qtcompat.h"
-#include <qwidget.h>
+#include <QtWidgets/QWidget>
 class Q_ComboBox;
 class Q_TextEdit;
 class QLineEdit;

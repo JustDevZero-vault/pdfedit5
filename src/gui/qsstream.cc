@@ -32,9 +32,9 @@
 #include "qsimporter.h"
 #include "pdfutil.h"
 #include "util.h"
-#include <qfile.h>
+#include <QtCore/QFile>
 #include <kernel/cobject.h>
-#include <qstring.h>
+#include <QtCore/QString>
 #include <qcstring.h>
 
 namespace gui {

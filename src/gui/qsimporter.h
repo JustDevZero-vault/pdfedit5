@@ -24,7 +24,7 @@
 #ifndef __QSIMPORTER_H__
 #define __QSIMPORTER_H__
 
-#include <qobject.h>
+#include <QtCore/QObject>
 #include <kernel/cobject.h>
 class QSProject;
 class QSInterpreter;

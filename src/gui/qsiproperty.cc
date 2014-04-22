@@ -34,7 +34,7 @@
 #include "util.h"
 #include <kernel/cobject.h>
 #include <qsimporter.h>
-#include <qstring.h>
+#include <QtCore/QString>
 #include QLIST
 
 namespace gui {

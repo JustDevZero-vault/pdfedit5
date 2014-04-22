@@ -32,20 +32,20 @@
 #include <utils/debug.h>
 #include "util.h"
 #include <kernel/cobject.h>
-#include <qapplication.h>
+#include <QtWidgets/QApplication>
 #include "main.h"
 #include "propertyfactory.h"
 #include "property.h"
 #include QSCROLLVIEW
-#include <qstringlist.h>
-#include <qlabel.h>
+#include <QtCore/QStringList>
+#include <QtWidgets/QLabel>
 #include <qgrid.h>
-#include <qlayout.h>
+#include <QtWidgets/QLayout>
 #include "pdfutil.h"
 #include "settings.h"
 #include "main.h"
 #include "propertymodecontroller.h"
-#include <qevent.h>
+#include <QtCore/QEvent>
 
 namespace gui {
 

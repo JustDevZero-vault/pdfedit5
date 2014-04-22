@@ -28,11 +28,11 @@
 
 #include <utils/debug.h>
 #include "revisiontool.h"
-#include <qstring.h>
+#include <QtCore/QString>
 #include <kernel/cpdf.h>
-#include <qcombobox.h>
+#include <QtWidgets/QComboBox>
 #include "settings.h"
-#include <qevent.h>
+#include <QtCore/QEvent>
 
 namespace gui {
 

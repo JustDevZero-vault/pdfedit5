@@ -39,13 +39,13 @@
 #include "util.h"
 #include "version.h"
 #include QBUTTONGROUP
-#include <qframe.h>
-#include <qlabel.h>
-#include <qlayout.h>
-#include <qlineedit.h>
-#include <qpushbutton.h>
-#include <qradiobutton.h>
-#include <qvalidator.h>
+#include <QtWidgets/QFrame>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QLayout>
+#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QPushButton>
+#include <QtWidgets/QRadioButton>
+#include <QtGui/QValidator>
 
 namespace gui {
 

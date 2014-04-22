@@ -28,11 +28,11 @@
 */
 
 #include "helpwindow.h"
-#include <qlayout.h>
-#include <qlabel.h>
-#include <qlineedit.h>
-#include <qpushbutton.h>
-#include <qstring.h>
+#include <QtWidgets/QLayout>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QPushButton>
+#include <QtCore/QString>
 #include QTEXTBROWSER
 #include "settings.h"
 #include "version.h"

@@ -1,5 +1,6 @@
 #!/bin/bash
-# PDFedit - free program for PDF document manipulation.
+# PDFedit5 - free program for PDF document manipulation.
+# Copyright (C) 2014  PDFedit5: Daniel Ripoll
 # Copyright (C) 2006-2009  PDFedit team: Michal Hocko,
 #                                        Jozef Misutka,
 #                                        Martin Petricek

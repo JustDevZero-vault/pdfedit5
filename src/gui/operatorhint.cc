@@ -30,7 +30,7 @@
 #include "operatorhint.h"
 #include "qtcompat.h"
 #include "settings.h"
-#include <qstring.h>
+#include <QtCore/QString>
 #include <stdlib.h>
 #include <utils/confparser.h>
 #include "util.h"

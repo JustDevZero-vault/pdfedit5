@@ -28,11 +28,11 @@
 
 #include "passworddialog.h"
 #include "version.h"
-#include <qlabel.h>
-#include <qlayout.h>
-#include <qlineedit.h>
-#include <qcheckbox.h>
-#include <qpushbutton.h>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QLayout>
+#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QCheckBox>
+#include <QtWidgets/QPushButton>
 #include <utils/debug.h>
 
 namespace gui {

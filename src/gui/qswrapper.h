@@ -24,7 +24,7 @@
 #ifndef __QSWRAPPER_H__
 #define __QSWRAPPER_H__
 
-#include <qobject.h>
+#include <QtCore/QObject>
 #include <qswrapperfactory.h>
 
 namespace gui {

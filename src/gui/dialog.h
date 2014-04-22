@@ -24,8 +24,8 @@
 #ifndef __DIALOG_H__
 #define __DIALOG_H__
 
-#include <qstring.h>
-#include <qcolor.h>
+#include <QtCore/QString>
+#include <QtGui/QColor>
 
 class QWidget;
 

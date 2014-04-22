@@ -25,11 +25,11 @@
 #ifndef __PAGEVIEWMODE_H__
 #define __PAGEVIEWMODE_H__
 
-#include <qpainter.h>
-#include <qevent.h>
-#include <qwidget.h>
+#include <QtGui/QPainter>
+#include <QtCore/QEvent>
+#include <QtWidgets/QWidget>
 #include <vector>
-#include <qpoint.h>
+#include <QtCore/QPoint>
 #include "rect2Darray.h"
 
 /*class pdfobjects::CAnnotation;

@@ -30,8 +30,8 @@
  @author Martin Petricek
 */
 
-#include <qstring.h>
-#include <qobject.h>
+#include <QtCore/QString>
+#include <QtCore/QObject>
 #include "nullpointerexception.h"
 
 namespace gui {

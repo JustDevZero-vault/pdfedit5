@@ -30,10 +30,10 @@
 */
 
 #include "optionwindow.h"
-#include <qdir.h>
-#include <qlabel.h>
-#include <qtabwidget.h>
-#include <qlayout.h>
+#include <QtCore/QDir>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QTabWidget>
+#include <QtWidgets/QLayout>
 #include <utils/debug.h>
 #include "util.h"
 #include "stringoption.h"
@@ -43,11 +43,11 @@
 #include "combooption.h"
 #include "booloption.h"
 #include "intoption.h"
-#include <qpoint.h>
+#include <QtCore/QPoint>
 #include <stdlib.h>
-#include <qpushbutton.h>
-#include <qstylefactory.h>
-#include <qapplication.h>
+#include <QtWidgets/QPushButton>
+#include <QtWidgets/QStyleFactory>
+#include <QtWidgets/QApplication>
 #include "version.h"
 #include "settings.h"
 #include "menu.h"

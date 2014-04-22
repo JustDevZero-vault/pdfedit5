@@ -28,9 +28,9 @@
 
 #include "booloption.h"
 #include "settings.h"
-#include <qstring.h>
-#include <qcheckbox.h>
-#include <qevent.h>
+#include <QtCore/QString>
+#include <QtWidgets/QCheckBox>
+#include <QtCore/QEvent>
 
 namespace gui {
 

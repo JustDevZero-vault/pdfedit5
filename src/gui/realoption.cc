@@ -29,8 +29,8 @@
 */
 
 #include "realoption.h"
-#include <qvalidator.h>
-#include <qlineedit.h>
+#include <QtGui/QValidator>
+#include <QtWidgets/QLineEdit>
 
 namespace gui {
 

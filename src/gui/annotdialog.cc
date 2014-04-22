@@ -25,23 +25,23 @@
  "Add Annotation" dialog<br>
  This dialog is used to add annotation in PDF document
 */
-#include "annotdialog.h"
 
-#include <qvariant.h>
-#include <qpushbutton.h>
-#include <qtabwidget.h>
-#include <qwidget.h>
+#include <QtCore/QVariant>
+#include <QtWidgets/QPushButton>
+#include <QtWidgets/QWidget>
+#include <QtWidgets/QCheckBox>
+#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QCombobox>
+#include <QtWidgets/QFrame>
+#include <QtWidgets/QLayout>
+#include <QtWidgets/QTooltip>
+#include <QtWidgets/QWhatsThis>
+#include <QtGui/QImage>
+#include <QtGui/QPixmap>
+#include <QtWidgets/QTabWidget>
+
+#include "annotdialog.h"
 #include QGROUPBOX
-#include <qcheckbox.h>
-#include <qlabel.h>
-#include <qlineedit.h>
-#include <qcombobox.h>
-#include <qframe.h>
-#include <qlayout.h>
-#include <qtooltip.h>
-#include <qwhatsthis.h>
-#include <qimage.h>
-#include <qpixmap.h>
 
 #include "kernel/cpage.h"
 #include "kernel/cannotation.h"

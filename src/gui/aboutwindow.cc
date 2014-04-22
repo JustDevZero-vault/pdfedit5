@@ -31,12 +31,12 @@
 #include "util.h"
 #include "iconcache.h"
 #include "imagewidget.h"
-#include <qframe.h>
-#include <qlabel.h>
-#include <qlayout.h>
-#include <qpushbutton.h>
+#include <QtWidgets/QFrame>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QLayout>
+#include <QtWidgets/QPushButton>
 #include <qsaglobal.h>
-#include <qsizepolicy.h>
+#include <QtWidgets/QSizePolicy>
 
 namespace gui {
 

@@ -30,7 +30,7 @@
 
 #include "refvalidator.h"
 #include "qtcompat.h"
-#include <qstring.h>
+#include <QtCore/QString>
 #include <utils/debug.h>
 #include "util.h"
 

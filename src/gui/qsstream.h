@@ -25,7 +25,7 @@
 #define __QSSTREAM_H__
 
 #include <kernel/cobject.h>
-#include <qstringlist.h>
+#include <QtCore/QStringList>
 #include "qsiproperty.h"
 class QString;
 

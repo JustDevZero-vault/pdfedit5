@@ -28,7 +28,7 @@
 #include "consolewindow.h"
 #include "settings.h"
 #include "util.h"
-#include <qstring.h>
+#include <QtCore/QString>
 #include <utils/debug.h>
 
 namespace gui {

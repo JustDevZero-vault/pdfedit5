@@ -32,10 +32,10 @@
 */
 
 #include "staticsettings.h"
-#include <qfile.h>
-#include <qstringlist.h>
-#include <qregexp.h>
-#include <qtextstream.h>
+#include <QtCore/QFile>
+#include <QtCore/QStringList>
+#include <QtCore/QRegExp>
+#include <QtCore/QTextSteam>
 
 namespace gui {
 

@@ -28,7 +28,7 @@
 
 #include "consolewriterconsole.h"
 #include "util.h"
-#include <qstring.h>
+#include <QtCore/QString>
 #include <assert.h>
 #include <iostream>
 

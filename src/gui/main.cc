@@ -40,10 +40,10 @@
 #include "kernel/cannotation.h"
 #include "kernel/pdfedit-core-dev.h"
 #include <iostream>
-#include <qapplication.h>
-#include <qdir.h>
-#include <qtranslator.h>
-#include <qstringlist.h>
+#include <QtWidgets/QApplication>
+#include <QtCore/QDir>
+#include <QtCore/QTranslator>
+#include <QtCore/QStringList>
 #include <stdlib.h>
 #include <time.h>
 #include <utils/debug.h>

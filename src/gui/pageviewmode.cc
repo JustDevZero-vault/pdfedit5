@@ -24,7 +24,7 @@
 // vim:tabstop=4:shiftwidth=4:noexpandtab
 #include <stdlib.h>
 #include <math.h>
-#include <qcursor.h>
+#include <QtGui/QCursor>
 
 #include "pageviewmode.h"
 #include "kernel/pdfoperatorsiter.h"

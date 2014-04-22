@@ -26,11 +26,11 @@
 
 #include "qscobject.h"
 #include <boost/shared_ptr.hpp>
-#include <qobject.h>
+#include <QtCore/QObject>
 #include <qrect.h>
-#include <qstring.h>
-#include <qstringlist.h>
-#include <qvariant.h>
+#include <QtCore/QString>
+#include <QtCore/QStringList>
+#include <QtCore/QVariant>
 #include <vector>
 class QRect;
 namespace pdfobjects {

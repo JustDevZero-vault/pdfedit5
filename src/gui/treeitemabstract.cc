@@ -35,7 +35,7 @@
 #include "util.h"
 #include <assert.h>
 #include <utils/debug.h>
-#include <qstring.h>
+#include <QtCore/QString>
 
 namespace gui {
 

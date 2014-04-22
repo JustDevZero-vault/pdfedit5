@@ -24,7 +24,7 @@
 #ifndef __IMAGEWIDGET_H__
 #define __IMAGEWIDGET_H__
 
-#include <qwidget.h>
+#include <QtWidgets/QWidget>
 
 class QPaintEvent;
 class QPixmap;

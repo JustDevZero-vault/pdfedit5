@@ -29,7 +29,7 @@
  @author Martin Petricek
 */
 
-#include <qwidget.h>
+#include <QtWidgets/QWidget>
 #include <kernel/iproperty.h>
 #include "propertyfactory.h"
 #include "stringproperty.h"

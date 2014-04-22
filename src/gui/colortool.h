@@ -24,9 +24,9 @@
 #ifndef __COLORTOOL_H__
 #define __COLORTOOL_H__
 
-#include <qwidget.h>
-#include <qcolor.h>
-#include <qstring.h>
+#include <QtWidgets/QWidget>
+#include <QtGui/QColor>
+#include <QtCore/QString>
 
 class QResizeEvent;
 class QPixmap;

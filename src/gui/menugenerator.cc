@@ -32,10 +32,10 @@
 
 #include <iostream>
 #include <string.h>
-#include <qfile.h>
-#include <qstringlist.h>
-#include <qtextstream.h>
-#include <qdir.h>
+#include <QtCore/QFile>
+#include <QtCore/QStringList>
+#include <QtCore/QTextSteam>
+#include <QtCore/QDir>
 #include "config.h"
 #include "util.h"
 #include "menu.h"

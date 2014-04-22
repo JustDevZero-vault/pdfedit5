@@ -39,7 +39,7 @@
 #include <kernel/cobject.h>
 #include <kernel/cpage.h>
 #include <kernel/cpdf.h>
-#include <qobject.h>
+#include <QtCore/QObject>
 
 namespace gui {
 

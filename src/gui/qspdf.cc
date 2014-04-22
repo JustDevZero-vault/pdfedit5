@@ -28,7 +28,7 @@
  @author Martin Petricek
 */
 
-#include <qstring.h>
+#include <QtCore/QString>
 #include "qspdf.h"
 #include "pdfutil.h"
 #include <stdio.h>

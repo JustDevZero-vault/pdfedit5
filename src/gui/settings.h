@@ -24,7 +24,7 @@
 #ifndef __SETTINGS_H__
 #define __SETTINGS_H__
 
-#include <qobject.h>
+#include <QtCore/QObject>
 class QSettings;
 class QSplitter;
 class QStringList;

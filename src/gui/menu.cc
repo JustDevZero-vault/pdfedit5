@@ -37,16 +37,16 @@
 #include "toolbutton.h"
 #include "toolfactory.h"
 #include "util.h"
-#include <qfile.h>
-#include <qlabel.h>
-#include <qmainwindow.h>
-#include <qmenubar.h>
+#include <QtCore/QFile>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QMainWindow>
+#include <QtWidgets/QMenuBar>
 #include <qmenudata.h>
-#include <qpixmap.h>
+#include <QtGui/QPixmap>
 #include QPOPUPMENU
-#include <qregexp.h>
-#include <qstring.h>
-#include <qtextstream.h>
+#include <QtCore/QRegExp>
+#include <QtCore/QString>
+#include <QtCore/QTextSteam>
 #include <utils/debug.h>
 #include <assert.h>
 

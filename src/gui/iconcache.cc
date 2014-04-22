@@ -30,12 +30,12 @@
 #include "settings.h"
 #include "util.h"
 #include <assert.h>
-#include <qfile.h>
-#include <qmap.h>
-#include <qpixmap.h>
+#include <QtCore/QFile>
+#include <QtCore/QMap>
+#include <QtGui/QPixmap>
 #include QICON
-#include <qstring.h>
-#include <qstringlist.h>
+#include <QtCore/QString>
+#include <QtCore/QStringList>
 #include <utils/debug.h>
 
 namespace gui {

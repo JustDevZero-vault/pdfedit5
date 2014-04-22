@@ -24,7 +24,7 @@
 #ifndef __REVISIONTOOL_H__
 #define __REVISIONTOOL_H__
 
-#include <qwidget.h>
+#include <QtWidgets/QWidget>
 #include <boost/smart_ptr.hpp>
 
 class QComboBox;

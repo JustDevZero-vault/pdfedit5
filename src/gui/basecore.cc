@@ -35,8 +35,8 @@
 #include "qstreeitem.h"
 #include "settings.h"
 #include <qsinterpreter.h>
-#include <qstring.h>
-#include <qstringlist.h>
+#include <QtCore/QString>
+#include <QtCore/QStringList>
 #include <qsutilfactory.h>
 #include <qsinputdialogfactory.h>
 #include <utils/debug.h>

@@ -24,10 +24,10 @@
 #ifndef __SELECTTOOL_H__
 #define __SELECTTOOL_H__
 
-#include <qwidget.h>
-#include <qcombobox.h>
-#include <qstring.h>
-#include <qstringlist.h>
+#include <QtWidgets/QWidget>
+#include <QtWidgets/QComboBox>
+#include <QtCore/QString>
+#include <QtCore/QStringList>
 class QResizeEvent;
 
 namespace gui {

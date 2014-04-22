@@ -24,10 +24,10 @@
 #ifndef __UNITS_H__
 #define __UNITS_H__
 
-#include <qstring.h>
-#include <qobject.h>
-#include <qstringlist.h>
-#include <qmap.h>
+#include <QtCore/QString>
+#include <QtCore/QObject>
+#include <QtCore/QStringList>
+#include <QtCore/QMap>
 
 namespace gui {
 

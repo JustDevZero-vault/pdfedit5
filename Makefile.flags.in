@@ -89,7 +89,7 @@ DOC_PATH	= $(docdir)
 MAN_PATH	= $(mandir)/man1
 BIN_PATH	= $(bindir)
 
-# this variables are used only for pdfedit-core-dev installation
+# this variables are used only for pdfedit5-core-dev installation
 LIB_PATH	= $(libdir)
 INCLUDE_PATH	= $(includedir)
 
@@ -107,7 +107,7 @@ ARCH	 = @ARCH@
 # Warning options
 WARN	 = @WARN@ 
 C_EXTRA	 = @C_EXTRA@ 
-# Note that this value will be used also for pdfedit-core-dev CFLAGS
+# Note that this value will be used also for pdfedit5-core-dev CFLAGS
 # (so don't put any debug, optimization or architecture specific options here)
 CXX_EXTRA = @CXX_EXTRA@ 
 
@@ -191,7 +191,7 @@ MANDATORY_INCPATH = -I$(SRCROOT) $(XPDFLAGS) $(BOOSTFLAGS)\
 # This is required for qmake which always forces -I when specifying 
 MANDATORY_PATHS	  = $(SRCROOT) $(XPDFLAGS) $(BOOSTFLAGS) $(FREETYPEFLAGS)
 
-# All necessary includes for 3rd party code depending on pdfedit-core-dev
+# All necessary includes for 3rd party code depending on pdfedit5-core-dev
 DIST_INCPATH	 = -I$(INCLUDE_PATH) -I$(INCLUDE_PATH)/xpdf $(BOOSTFLAGS) \
 		   $(FREETYPEFLAGS) $(T1FLAGS)
 
@@ -203,11 +203,11 @@ PNG_LIBS	 = @png_LIBS@
 BOOST_LIBS 	 = @BOOST_LDFLAGS@
 BOOSTPROGRAMOPTIONS_LIBS = @BOOST_PROGRAM_OPTIONS_LIB@
 
-# PDFedit specific libs
+# PDFedit5 specific libs
 CPPUNIT_LIBS	 = @CPPUNIT_LIBS@
 QOUTPUTDEV_LIBS	 = -lqoutputdevices -L$(QOUTPUTDEVROOT)/
-QSALIB		 = -lqsa_pdfedit -L$(QSAROOT)/lib/
-PDFEDIT_LIBS     = -lkernel -L$(KERNELROOT) -lutils -L$(UTILSROOT) \
+QSALIB		 = -lqsa_pdfedit5 -L$(QSAROOT)/lib/
+PDFEDIT5_LIBS     = -lkernel -L$(KERNELROOT) -lutils -L$(UTILSROOT) \
 		   -lxpdf -L$(XPDFROOT)/xpdf -lfofi -L$(XPDFROOT)/fofi \
 		   -lGoo -L$(XPDFROOT)/goo -lsplash -L$(XPDFROOT)/splash 
 # given from configure parameters
@@ -215,10 +215,10 @@ STANDARD_LIBS	 = @LIBS@
 STANDARD_LDFLAGS = @LDFLAGS@
 
 # all necessary libraries
-MANDATORY_LIBS	 = $(BOOST_LIBS) $(PDFEDIT_LIBS) \
+MANDATORY_LIBS	 = $(BOOST_LIBS) $(PDFEDIT5_LIBS) \
 		   $(FREETYPE_LIBS) $(T1_LIBS) $(ZLIB_LIBS)
 
-# All necessary libraries for 3rd party code depending on pdfedit-core-dev
+# All necessary libraries for 3rd party code depending on pdfedit5-core-dev
 # TODO change to have only one library containing kernel, utils, xpdf, fofi,
 # goo, splash libraries
 DIST_LIBS =  $(BOOST_LIBS) \

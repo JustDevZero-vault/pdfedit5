@@ -32,13 +32,13 @@
 #include "selectpagesdialog.h"
 #include "pdfutil.h"
 #include "util.h"
-#include <qvariant.h>
-#include <qpushbutton.h>
-#include <qlabel.h>
-#include <qlineedit.h>
-#include <qframe.h>
+#include <QtCore/QVariant>
+#include <QtWidgets/QPushButton>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QFrame>
 #include QLISTBOX
-#include <qlayout.h>
+#include <QtWidgets/QLayout>
 #include <kernel/cpdf.h>
 
 //=====================================================================================

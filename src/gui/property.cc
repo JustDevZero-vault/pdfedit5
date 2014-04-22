@@ -30,8 +30,8 @@
 #include "property.h"
 #include "qtcompat.h"
 #include <kernel/iproperty.h>
-#include <qstring.h>
-#include <qlabel.h>
+#include <QtCore/QString>
+#include <QtWidgets/QLabel>
 #include "util.h"
 #include <utils/debug.h>
 

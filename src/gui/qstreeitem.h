@@ -24,9 +24,9 @@
 #ifndef __QSTREEITEM_H__
 #define __QSTREEITEM_H__
 
-#include <qobject.h>
+#include <QtCore/QObject>
 #include "qscobject.h"
-#include <qstringlist.h>
+#include <QtCore/QStringList>
 
 namespace gui {
 

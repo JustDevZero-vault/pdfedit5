@@ -34,14 +34,14 @@
 #include "dialog.h"
 #include "settings.h"
 #include "version.h"
-#include <qdir.h>
-#include <qinputdialog.h>
-#include <qmessagebox.h>
-#include <qfiledialog.h>
-#include <qcolordialog.h>
-#include <qfileinfo.h>
+#include <QtCore/QDir>
+#include <QtWidgets/QInputDialog>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QFileDialog>
+#include <QtWidgets/QColorDialog>
+#include <QtCore/QFileInfo>
 #include <utils/debug.h>
-#include <qstring.h>
+#include <QtCore/QString>
 #include "util.h"
 
 namespace gui {

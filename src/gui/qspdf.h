@@ -24,7 +24,7 @@
 #ifndef __QSPDF_H__
 #define __QSPDF_H__
 
-#include <qobject.h>
+#include <QtCore/QObject>
 #include "qscobject.h"
 class QString;
 namespace pdfobjects {

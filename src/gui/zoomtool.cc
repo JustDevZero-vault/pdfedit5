@@ -28,10 +28,10 @@
 
 #include <utils/debug.h>
 #include "zoomtool.h"
-#include <qstring.h>
-#include <qcombobox.h>
-#include <qvalidator.h>
-#include <qevent.h>
+#include <QtCore/QString>
+#include <QtWidgets/QComboBox>
+#include <QtGui/QValidator>
+#include <QtCore/QEvent>
 #include "settings.h"
 
 namespace gui {

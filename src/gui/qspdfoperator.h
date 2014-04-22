@@ -24,8 +24,8 @@
 #ifndef __QSPDFOPERATOR_H__
 #define __QSPDFOPERATOR_H__
 
-#include <qvariant.h>
-#include <qobject.h>
+#include <QtCore/QVariant>
+#include <QtCore/QObject>
 #include <kernel/pdfoperators.h>
 #include "qscobject.h"
 class QString;

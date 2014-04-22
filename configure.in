@@ -1,11 +1,11 @@
 dnl                    -*- Autoconf -*-
 dnl Process this file with autoconf to produce a configure script.
 
-AC_PREREQ(2.61)
+AC_PREREQ(2.69)
 dnl TODO change for devel package
-define([PDFEDIT_VERSION], patsubst(esyscmd(./getversion -v),[]))
-AC_INIT([PDFedit], PDFEDIT_VERSION, 
-	[BUGTRACKER - http://pdfedit.petricek.net/bt/ ],[pdfedit])
+define([PDFEDIT5_VERSION], patsubst(esyscmd(./getversion -v),[]))
+AC_INIT([PDFedit5], PDFEDIT5_VERSION, 
+	[BUGTRACKER - http://bugtracker.danielripoll.me/bt/ ],[pdfedit5])
 AC_CONFIG_SRCDIR([src/gui/base.cc])
 dnl FIXME what do we use src/utils/aconf.h for? No includes according to
 dnl grep. Can we remove it?
@@ -257,20 +257,20 @@ dnl implicit and if some option want to include man pages, it simply sets
 dnl this to true and the rest is done later in this script
 enable_man_doc="no"
 
-dnl TODO maybe be can add also generic pdfedit-dev package which will install
-dnl pdfedit-core-dev and pdfedit-gui-dev (which will contain gui reusable code
+dnl TODO maybe be can add also generic pdfedit5-dev package which will install
+dnl pdfedit5-core-dev and pdfedit5-gui-dev (which will contain gui reusable code
 dnl e.g. scripting)
 
 dnl Sets DEV_TARGET for pdfedit-core-dev package
-AC_ARG_ENABLE(pdfedit-core-dev,
-	      AS_HELP_STRING([--enable-pdfedit-core-dev],
-			     [Builds and prepars PDFedit-core-dev package which can be
+AC_ARG_ENABLE(pdfedit5-core-dev,
+	      AS_HELP_STRING([--enable-pdfedit5-core-dev],
+			     [Builds and prepars PDFedit5-core-dev package which can be
 			      used by 3rd party project separately from gui frontend
 			      (this includes static libraries and header files)]),
 			      ,
-			      [enable_pdfedit_core_dev=no])
-AC_MSG_CHECKING(whether we want to prepare pdfedit-core-dev package)
-if test "x$enable_pdfedit_core_dev" = "xyes"
+			      [enable_pdfedit5_core_dev=no])
+AC_MSG_CHECKING(whether we want to prepare pdfedit5-core-dev package)
+if test "x$enable_pdfedit5_core_dev" = "xyes"
 then
 	AC_MSG_RESULT(yes)
 	INSTALL_TARGET="$INSTALL_TARGET install-core-dev"
@@ -288,15 +288,15 @@ AC_ARG_ENABLE(gui,
 			      ,
 			      [enable_gui=yes])
 
-AC_MSG_CHECKING(whether we want to build PDFedit gui)
+AC_MSG_CHECKING(whether we want to build PDFedit5 gui)
 dnl Check QT environment if we want GUI
-dnl QSA_DIR is set to qt3 by default. Note that this is important because
+dnl QSA_DIR is set to qt5 by default. Note that this is important because
 dnl we need at least some qsa directory for src/Makefile and its clean target
 dnl gui implies also man pages
 QSA_DIR="$QSA_DIR qsa"
 if test "x$enable_gui" = "xyes"; then
 	AC_MSG_RESULT(yes)
-	GUI_TARGET="$GUI_TARGET pdfedit"
+	GUI_TARGET="$GUI_TARGET pdfedit5"
 	INSTALL_TARGET="$INSTALL_TARGET install-gui"
 	UNINSTALL_TARGET="$UNINSTALL_TARGET uninstall-gui"
 
@@ -309,29 +309,29 @@ if test "x$enable_gui" = "xyes"; then
 			    - default will be used.])
 
 	AC_MSG_CHECKING(for QT qmake)
-	CHK_EXECUTABLE([qmake],[qmake qmake-qt3],[${QTDIR}/bin /usr/bin /usr/local/bin /usr/lib/qt3/bin],[
-		dnl check the qmake we found is for correct QT version (3.x.x)
-		isqmake3=`$testbin --version 2>&1 | grep '3\.[[0-9]][[0-9]]*\.[[0-9]][[0-9]]*'`
+	CHK_EXECUTABLE([qmake],[qmake qmake-qt5],[${QTDIR}/bin /usr/bin /usr/local/bin /usr/lib/qt5/bin],[
+		dnl check the qmake we found is for correct QT version (5.x.x)
+		isqmake3=`$testbin --version 2>&1 | grep '5\.[[0-9]][[0-9]]*\.[[0-9]][[0-9]]*'`
 		if test -z "$isqmake3"
 		then
 			testbin=""
 		fi
-	],[(only for platforms where qmake is not installed under QTDIR/bin, /usr/bin, /usr/local/bin, /usr/lib/qt3/bin or in PATH).])
+	],[(only for platforms where qmake is not installed under QTDIR/bin, /usr/bin, /usr/local/bin, /usr/lib/qt5/bin or in PATH).])
 	if test -z "${qmake_bin}"
 	then
-		AC_MSG_ERROR(unable to find qmake for QT3)
+		AC_MSG_ERROR(unable to find qmake for QT5)
 	fi
 	QMAKE="$QMAKE ${qmake_bin}"
-	AC_MSG_RESULT(Using QT3 with qmake=${qmake_bin})
+	AC_MSG_RESULT(Using QT5 with qmake=${qmake_bin})
 	AC_SUBST(QMAKE)
 
 	dnl check for lrelease
 	AC_MSG_CHECKING(for QT lrelease)
-	CHK_EXECUTABLE([lrelease],[lrelease],[${QTDIR}/bin /usr/bin /usr/local/bin /usr/lib/qt3/bin],[],
-		       [(Only for platforms where lrelease is not installed under QTDIR/bin, /usr/bin, /usr/local/bin, /usr/lib/qt3/bin or in PATH).])
+	CHK_EXECUTABLE([lrelease],[lrelease],[${QTDIR}/bin /usr/bin /usr/local/bin /usr/lib/qt5/bin],[],
+		       [(Only for platforms where lrelease is not installed under QTDIR/bin, /usr/bin, /usr/local/bin, /usr/lib/qt5/bin or in PATH).])
 	if test -z "${lrelease_bin}"
 	then
-		AC_MSG_ERROR(unable to find lrelease localization binary for QT3)
+		AC_MSG_ERROR(unable to find lrelease localization binary for QT5)
 	fi
 	LRELEASE="$LRELEASE ${lrelease_bin}"
 	AC_MSG_RESULT(Using lrelease=${lrelease_bin})
@@ -594,9 +594,9 @@ then
 	AC_MSG_RESULT(yes)
 	boost_program_options_required=yes
 	png_required=yes
-	if test "x$enable_pdfedit_core_dev" != "xyes"
+	if test "x$enable_pdfedit5_core_dev" != "xyes"
 	then
-		AC_MSG_ERROR(--enable pdfedit-core-dev is required for tools)
+		AC_MSG_ERROR(--enable pdfedit5-core-dev is required for tools)
 	fi
 	TOOLS_TARGET="$TOOLS_TARGET tools"
 else
@@ -723,13 +723,13 @@ echo " Build doxygen documentation   : $enable_doxygen_doc"
 echo " Build advanced documentation  : $enable_advanced_doc"
 echo " Build kernel tests            : $enable_kernel_tests"
 echo " Build GUI                     : $enable_gui"
-echo " Build pdfedit-core-dev        : $enable_pdfedit_core_dev"
+echo " Build pdfedit5-core-dev        : $enable_pdfedit5_core_dev"
 echo " Build tools                   : $enable_tools"
 echo
 echo "Installation summary:"
 echo " Root directory                : $root_dir"
 echo " Install into                  : $prefix"
-echo " Install pdfedit-core-dev      : $enable_pdfedit_core_dev"
+echo " Install pdfedit5-core-dev      : $enable_pdfedit5_core_dev"
 echo " Install gui                   : $enable_gui"
 echo ""
 echo "Type 'make' to build $PACKAGE_STRING"

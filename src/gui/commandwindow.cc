@@ -29,18 +29,18 @@
 #include "util.h"
 #include <utils/debug.h>
 #include <iostream>
-#include <qlayout.h>
-#include <qpushbutton.h>
-#include <qfile.h>
+#include <QtWidgets/QLayout>
+#include <QtWidgets/QPushButton>
+#include <QtCore/QFile>
 #include QLISTBOX
 #include QCOMBOBOX
-#include <qtextstream.h>
+#include <QtCore/QTextSteam>
 #include QTEXTEDIT
-#include <qlineedit.h>
+#include <QtWidgets/QLineEdit>
 #include <qseditor.h>
 #include <qsinterpreter.h>
-#include <qsplitter.h>
-#include <qsizepolicy.h>
+#include <QtWidgets/QSplitter>
+#include <QtWidgets/QSizePolicy>
 
 using namespace std;
 using namespace util;

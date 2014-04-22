@@ -17,7 +17,8 @@
 #
 # LICENSE
 #	
-# PDFedit - free program for PDF document manipulation.
+# PDFedit5 - free program for PDF document manipulation.
+# Copyright (C) 2014  PDFedit5: Daniel Ripoll
 # Copyright (C) 2006-2009  PDFedit team: Michal Hocko,
 #                                        Jozef Misutka,
 #                                        Martin Petricek
@@ -37,87 +38,87 @@
 # Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, 
 # MA  02111-1307  USA
 #
-# Project is hosted on http://sourceforge.net/projects/pdfedit
-AC_DEFUN([AX_PDFEDIT_CORE_DEV],
+# Project is hosted on http://github.com/mephiston/pdfedit5
+AC_DEFUN([AX_PDFEDIT5_CORE_DEV],
 [
-	AC_ARG_WITH([pdfedit-core-dev-config],
-		AS_HELP_STRING([--with-pdfedit-core-dev-config@<:@=special-lib@:>@],
-			[use the specific pdfedit-core-dev-config script]
+	AC_ARG_WITH([pdfedit5-core-dev-config],
+		AS_HELP_STRING([--with-pdfedit5-core-dev-config@<:@=special-lib@:>@],
+			[use the specific pdfedit5-core-dev-config script]
 		),
 		[
 		if test "$withval" = "no"; then
-			want_pdfedit_core_dev="no"
+			want_pdfedit5_core_dev="no"
 		elif test "$withval" = "yes"; then
-			want_pdfedit_core_dev="yes"
-			ax_pdfedit_user_core_dev_config=""
+			want_pdfedit5_core_dev="yes"
+			ax_pdfedit5_user_core_dev_config=""
 		else
 		{
-			want_pdfedit_core_dev="yes"
+			want_pdfedit5_core_dev="yes"
 			if test -x $withval; then
-				ax_pdfedit_user_core_dev_config="$withval"
-				AC_MSG_NOTICE(Using provided $ax_pdfedit_user_core_dev_config configuration script for pdfedit-core-dev)
+				ax_pdfedit5_user_core_dev_config="$withval"
+				AC_MSG_NOTICE(Using provided $ax_pdfedit5_user_core_dev_config configuration script for pdfedit5-core-dev)
 			else
-				AC_MSG_ERROR(--with-pdfedit-core-dev-config expected executable file)
+				AC_MSG_ERROR(--with-pdfedit5-core-dev-config expected executable file)
 			fi
 		}
 		fi
 		],
-		[want_pdfedit_core_dev="yes"]
+		[want_pdfedit5_core_dev="yes"]
 	)
 
-	if test "x$want_pdfedit_core_dev" = "xyes"; 
+	if test "x$want_pdfedit5_core_dev" = "xyes"; 
 	then
 		AC_REQUIRE([AC_PROG_CC])
-		export want_pdfedit_core_dev
+		export want_pdfedit5_core_dev
 
 		CPPFLAGS_SAVED="$CPPFLAGS"
 		LDFLAGS_SAVED="$LDFLAGS"
-		config="pdfedit-core-dev-config"
-		ax_pdfedit_core_dev_config="$ax_pdfedit_user_core_dev_config"
-		if test -z "$ax_pdfedit_core_dev_config"
+		config="pdfedit5-core-dev-config"
+		ax_pdfedit5_core_dev_config="$ax_pdfedit5_user_core_dev_config"
+		if test -z "$ax_pdfedit5_core_dev_config"
 		then
-			for i in  $PDFEDIT_CORE_DEV_PATH/bin/$config $exec_prefix/$config /usr/bin/$config /usr/local/bin/$config
+			for i in  $PDFEDIT5_CORE_DEV_PATH/bin/$config $exec_prefix/$config /usr/bin/$config /usr/local/bin/$config
 			do
 				if test -x "$i"
 				then
-					ax_pdfedit_core_dev_config="$i"
+					ax_pdfedit5_core_dev_config="$i"
 					break;
 				fi
 			done
 		fi
 
-		if test -z "$ax_pdfedit_core_dev_config"
+		if test -z "$ax_pdfedit5_core_dev_config"
 		then
 			AC_MSG_ERROR($config not found)
 		fi
 
-		PDFEDIT_CORE_DEV_CPPFLAGS="`$ax_pdfedit_core_dev_config --cflags`"
-		CPPFLAGS="$CPPFLAGS $PDFEDIT_CORE_DEV_CPPFLAGS"
+		PDFEDIT5_CORE_DEV_CPPFLAGS="`$ax_pdfedit5_core_dev_config --cflags`"
+		CPPFLAGS="$CPPFLAGS $PDFEDIT5_CORE_DEV_CPPFLAGS"
 		export CPPFLAGS
-		PDFEDIT_CODE_DEV_LDFLAGS="`$ax_pdfedit_core_dev_config --libs`"
-		LDFLAGS="$LDFLAGS $PDFEDIT_CODE_DEV_LDFLAGS"
+		PDFEDIT5_CODE_DEV_LDFLAGS="`$ax_pdfedit5_core_dev_config --libs`"
+		LDFLAGS="$LDFLAGS $PDFEDIT5_CODE_DEV_LDFLAGS"
 		export LDFLAGS
-		AC_CACHE_CHECK([whether pdfedit-core-dev library is available],
-			ax_cv_pdfedit_core_dev,
+		AC_CACHE_CHECK([whether pdfedit5-core-dev library is available],
+			ax_cv_pdfedit5_core_dev,
 			[AC_LANG_PUSH(C++)
-				AC_COMPILE_IFELSE(AC_LANG_PROGRAM([[@%:@include <kernel/pdfedit-core-dev.h>]],
-					[[pdfedit_core_dev_init(); return 0;]]),
-					ax_cv_pdfedit_core_dev=yes, ax_cv_pdfedit_core_dev=no)
+				AC_COMPILE_IFELSE(AC_LANG_PROGRAM([[@%:@include <kernel/pdfedit5-core-dev.h>]],
+					[[pdfedit5_core_dev_init(); return 0;]]),
+					ax_cv_pdfedit5_core_dev=yes, ax_cv_pdfedit5_core_dev=no)
 			 AC_LANG_POP([C++])
 			]
 		)
-		if test "$ax_cv_pdfedit_core_dev" = "no"
+		if test "$ax_cv_pdfedit5_core_dev" = "no"
 		then
-			AC_MSG_ERROR(Not able to link with pdfedit-core-dev library)
+			AC_MSG_ERROR(Not able to link with pdfedit5-core-dev library)
 		fi
-		ax_pdfedit_version="`$ax_pdfedit_core_dev_config --version`"
-		AC_MSG_NOTICE(pdfedit-core-dev with $ax_pdfedit_version found)
+		ax_pdfedit5_version="`$ax_pdfedit5_core_dev_config --version`"
+		AC_MSG_NOTICE(pdfedit5-core-dev with $ax_pdfedit5_version found)
 		CPPFLAGS="$CPPFLAGS_SAVED"
 		LDFLAGS="$LDFLAGS_SAVED"
-		AC_SUBST(PDFEDIT_CORE_DEV_CPPFLAGS)
-		AC_SUBST(PDFEDIT_CODE_DEV_LDFLAGS)
+		AC_SUBST(PDFEDIT5_CORE_DEV_CPPFLAGS)
+		AC_SUBST(PDFEDIT5_CODE_DEV_LDFLAGS)
 	else
-		AC_MSG_NOTICE(Not using pdfedit-core-dev)
+		AC_MSG_NOTICE(Not using pdfedit5-core-dev)
 	fi
 ]
 )

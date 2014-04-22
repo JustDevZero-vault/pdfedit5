@@ -24,7 +24,7 @@
 #ifndef __PROPERTY_H__
 #define __PROPERTY_H__
 
-#include <qwidget.h>
+#include <QtWidgets/QWidget>
 #include <kernel/modecontroller.h>
 
 class QString;

@@ -27,7 +27,7 @@
 #include "treeitemabstract.h"
 #include <boost/shared_ptr.hpp>
 #include <vector>
-#include <qstring.h>
+#include <QtCore/QString>
 namespace pdfobjects {
  class IProperty;
  class PdfOperator;

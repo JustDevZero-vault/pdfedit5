@@ -1,0 +1,97 @@
+OLD TODO list:
+Haven't check nothing from here yet
+----------
+
+GUI
+Miro (all is now bugtracker)
+ BT[x] Bug: setOpColor graphical pre operatory
+ [x] Adding text "inline" straight to the page - Miro
+ [x] Editing text -> In the text box, but remove all operators except the last one and the first one will have a new text - Miro
+ [x] The correct setting cm operator when inserting new object - script function
+  -> [x] The correct setting font size when font size changes at any Operator
+  -> BT [ ] operatory MoveAbove, MoveBelow, REsize, Move (iba pre graficky) -> pro vyselectene ze sranky
+ [x] Bug: repair of text-selection of operators
+ [x] bbox is in some weird units nas conversion functions are displayparams in CPage ... somehow the data to scripting - baseconsole??
+  -> [x] add convertPixmapPosToPdfPos also for commandline (Part baseGUI and baseCMD) (data in BASE)
+  ?  Text search - Throughout the document + dialog to edit + search history (within the session) - Miro - ?
+  ?  Draw a circle and of other primitives?
+  ?  Jump at the target annotation (look at Target in xpdf) - Miro
+ [x] Mod: Crossing out, highlighting the text (colored square under the text) - Miro
+  -> [x]Error setting CM
+ [x] actualize selection issue was left operatory
+ [x] Changing units (cm, inches, ...) + patch scripts
+  -> [x] Edit page metric was left
+ [x] Sort units by size, come back in some nicer shape with a description
+ [x] Bug: If the vyselectena annotation and if you open a new document, highlight remains
+ [x] In the annotation mode to draw a box around annotation
+ [x] Find out how it is with PdfOperator.getBBox in console mode
+Michal
+ [ ] DOPS vic commandline script than just delinearizator
+     (at least something usefull - concat documents, even / odd ...)
+     -> Make it a grandiose example to take. guide (we put together some common)
+?
+ [ ] Everywhere treat all exceptions from the kernel, and then throw the message "This pdf is defective ...." -> reminder to check
+  ?  script to saltation on target after clicking on the docket
+  ?  Toolbar Widget to select the current line style
+  ?  Toggle icons at runtime without reloading
+  ?  Wrapper with the general parameters QObject If the wrong parameter throw a TypeError not just silently fail (someone already, but check if it's everywhere)
+  ?  TreeItemRef -> target is somewhere in the parent tree. Find out what makes squashed arrow on treeitem (in code of QT)
+     and accordingly then do a little more consistent cursor in this "pathologies"
+  ?  Show only recent changes to the page - the kernel - if anyone remembers what it was like.
+????? Windows build (about only through cygwin due to xpdf / splashdevice) - wishlist
+ ??? Slovakia localization :)
+ ??? Inserting a "template items" from the PDF (Somehow patterning or something like that)
+ ??? Value based tree reloading - reloading better optimization for array-based tree items (list of operators, CArray)
+     - things that are not identified as key etc but i dict value
+ ??? TreeItemRef - support deepreload () - optimization when reloading
+ ??? Recently opened documents at menu + set their homage to what is stored
+ ??? QSA wrappers Counseling treat memory leaks (garbage when you close the window is too late :)
+ ??? "Plugin Scripts" -> must add the function to the added menu items / menus / toolbars / toolbuttons at runtime without changing the configuration
+ ??? "Plugin Scripts" -> function to be more dynamic registration callback
+ ??? "Plugin Scripts" -> some AutoUpdater? (via QHttp and dialogue)
+ ???  Wrapper around Const cdict (treeitem) -?
+ ???  Option for displaying reference in tabs / primo, the same for contentstreamy
+     - for things that are to be displayed in the taboo should childs () at treeitem return an empty list if it is not treeitem in spices
+     - Same with reference to what will not open, like the reference to the parent (there tio but had already operate)
+ ??? Automatically tests the GUI (it would have probably even a little something to finish scripting, but then something would test slo)
+ ??? Correctly restore the splitter if it was something hidden and there was an exit and reopen the matter
+ ??? Popup menu to switch the taboo multitree could be in alphabetical order
+ ??? Dictionary Page View as indirect object instead of directly "Dictionary" Determine the indirect object (IndiRef, getReference()) and put on it a reference
+     + the tree is the total min items, I know what object it is
+     - I have a level more in tree
+ ??? Save / load to streams (save to disk, replace the disk) - future wishlist
+
+Final
+ [ ] compile-DNDEBUG (without a debug ASSERT)
+
+Scripting
+  ?  add getAllAnnotations
+ ??? Wrapper around Const cdict -> for reading things from the trailer. Alternatively, the data and then into a tree
+
+Kernel
+ ??? Decryption/Encryption - future wishlist
+ [s] Slide the contenstreamu a level higher / lower
+ ??? Filter (LZW, FlateDecode, ..)
+ [o] Only returns the last change as pdfoperatory? as cstream?
+
+Documentation
+ [ ] Somewhere tell us about Outlines that we need reloading + limitations when working with them.
+ [ ] GUI Design Documentation (Hard Error)
+ [ ] Design of the dossier KERNEL (jozo) (severe error)
+ [ ] Describe things in *. Qs files
+ [ ] In scripting.xml tez further describe the scripting as such
+ [ ] More examples in the scripting documentation
+ [ ] User documentation (Hard Error)
+ [x] Documentation dialog & utility framework (converted from. Leaf in QSA)
+ [ ] Describe the meta-comment console script
+ [ ] Somehow handbook "How to create scripts, where the CPAT", etc ...
+ [ ] Document Keyboard Shortcuts (spec. type PgDn keystrokes, etc ...)
+ [ ] Doxygen: set EXTRACT_ALL = YES (Warning lose the majority, but we are then guaranteed to complete documentation - just before handing in)
+ [ ] Mention of bbox is in some weird units (pixels, see the documentation), the possible functions nas conversion
+
+
+Configure
+ [ ] To test the existence and versions of all libraries, especially QSA, where s 1.1.1 Although it goes to compile, but then it falls
+ [ ] Document configure (in install.xml?)-MP
+
+

@@ -54,9 +54,9 @@
 #include <kernel/flattener.h>
 #include <kernel/factories.h>
 #include <kernel/pdfwriter.h>
-#include <qdir.h>
-#include <qfile.h>
-#include <qdatetime.h>
+#include <QtCore/QDir>
+#include <QtCore/QFile>
+#include <QtCore/QDateTime>
 #include <qsinterpreter.h>
 #include <utils/debug.h>
 #include <kernel/textoutput.h>

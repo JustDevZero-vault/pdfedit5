@@ -1,5 +1,6 @@
 #!/bin/sh
-# PDFedit - free program for PDF document manipulation.
+# PDFedit5 - free program for PDF document manipulation.
+# Copyright (C) 2014  PDFedit5: Daniel Ripoll
 # Copyright (C) 2006-2009  PDFedit team: Michal Hocko,
 #                                        Jozef Misutka,
 #                                        Martin Petricek
@@ -19,9 +20,9 @@
 # Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, 
 # MA  02111-1307  USA
 #
-# Project is hosted on http://sourceforge.net/projects/pdfedit
+# Project is hosted on http://github.com/mephiston/pdfedit5
 
-# This is script that will create distribution tarballs
+# This is script that will in theory create distribution tarballs
 
 # Checks for configure script and generates it if either
 # existing one is older than configure.in or it doesn't exist at all
@@ -49,16 +50,16 @@ echo Online help generated
 
 # generates man page
 cd doc/tools/
-./docbook2man.pl ../user/pdfedit.xml > ../user/pdfedit.1
+./docbook2man.pl ../user/pdfedit5.xml > ../user/pdfedit5.1
 cd ../../
 echo Man page generated
 
 #Get version number
 VERSION=`./getversion -v -r`
-GENERATED_FILES=".scmversion configure doc src/gui doc/user/pdfedit.1"
+GENERATED_FILES=".scmversion configure doc src/gui doc/user/pdfedit5.1"
 
-TAR_PREFIX="pdfedit-$VERSION/"
-TAR_FILE="pdfedit-${VERSION}.tar"
+TAR_PREFIX="pdfedit5-$VERSION/"
+TAR_FILE="pdfedit5-${VERSION}.tar"
 
 # Git archive makes it really hard to exclude file (.gitattributes
 # and export-ignore is really awkward) so do not try to use it and
@@ -71,4 +72,4 @@ echo $VERSION > .scmversion
 tar --exclude-from=dist-exclude --transform "s@^@$TAR_PREFIX/@" -rf $TAR_FILE $GENERATED_FILES
 rm .scmversion
 
-gzip "pdfedit-${VERSION}.tar"
+gzip "pdfedit5-${VERSION}.tar"

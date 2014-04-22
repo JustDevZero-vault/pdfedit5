@@ -25,10 +25,10 @@
 #define __BASE_H__
 
 #include "basecore.h"
-#include <qobject.h>
-#include <qstring.h>
-#include <qstringlist.h>
-#include <qvariant.h>
+#include <QtCore/QObject>
+#include <QtCore/QString>
+#include <QtCore/QStringList>
+#include <QtCore/QVariant>
 
 namespace pdfobjects {
  class CPdf;

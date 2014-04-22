@@ -1,3 +1,7 @@
+2014-04-20 PDF Editor 0.99
+    *First commit, starting with Qt5, nothing is executable ATRM
+
+2011-02-18 PDF Editor 0.4.5-79
 	* Internal changes
 		- string to font encoding fixed on the library level
 		- C{Dict,Array,CStream}::getProperty<Type> added

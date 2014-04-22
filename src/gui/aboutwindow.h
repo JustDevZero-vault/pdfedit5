@@ -24,7 +24,7 @@
 #ifndef __ABOUTWINDOW_H__
 #define __ABOUTWINDOW_H__
 
-#include <qwidget.h>
+#include <QtWidgets/QWidget>
 
 namespace gui {
 

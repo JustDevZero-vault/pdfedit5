@@ -46,7 +46,7 @@
 #include "util.h"
 #include <qsinterpreter.h>
 #include <qsproject.h>
-#include <qstring.h>
+#include <QtCore/QString>
 #include <utils/debug.h>
 
 namespace gui {

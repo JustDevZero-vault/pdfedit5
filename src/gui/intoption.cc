@@ -27,9 +27,9 @@
 */
 
 #include "intoption.h"
-#include <qvalidator.h>
-#include <qstring.h>
-#include <qlineedit.h>
+#include <QtGui/QValidator>
+#include <QtCore/QString>
+#include <QtWidgets/QLineEdit>
 
 namespace gui {
 

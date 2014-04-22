@@ -29,7 +29,7 @@
 #include "settings.h"
 #include "util.h"
 #include <iostream>
-#include <qlayout.h>
+#include <QtWidgets/QLayout>
 #ifdef DRAGDROP
 #include "draglistview.h"
 #endif

@@ -38,7 +38,7 @@ contains( E_RELEASE, yes ) {
 
 # Needed for Qt4. Qt3's Qmake does not know this variable, so it is ignored
 # Note Qt4 is not (yet) supported
-QT += qt3support
+QT += core gui widgets
 
 # QT_CLEAN_NAMESPACE must be specified, otherwise namespace debug will clash with debug() in QT
 QMAKE_CXXFLAGS += -DQT_CLEAN_NAMESPACE -fexceptions
@@ -131,7 +131,8 @@ QMAKE_EXTRA_UNIX_TARGETS += menugenerator menugenerator_o
 QMAKE_CLEAN += .obj/menugenerator.o
 
 # Dialogs
-HEADERS += additemdialog.h  aboutwindow.h  option.h  optionwindow.h  dialog.h  imagewidget.h
+HEADERS += additemdialog.h  aboutwindow.h  option.h  optionwindow.h  dialog.h  imagewidget.h \
+    aboutdialog.h
 SOURCES += additemdialog.cc aboutwindow.cc option.cc optionwindow.cc dialog.cc imagewidget.cc
 HEADERS += stringoption.h  realoption.h  intoption.h  booloption.h  combooption.h
 SOURCES += stringoption.cc realoption.cc intoption.cc booloption.cc combooption.cc
@@ -273,3 +274,8 @@ unix {
   MOC_DIR = .moc
   OBJECTS_DIR = .obj
 }
+
+FORMS +=
+
+RESOURCES += \
+    pdfedit5.qrc

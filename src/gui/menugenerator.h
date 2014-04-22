@@ -25,7 +25,7 @@
 #define __MENUGENERATOR_H__
 
 #include "staticsettings.h"
-#include <qmap.h>
+#include <QtCore/QMap>
 
 /**
  Generator, checker and translation generator of menu configuration<br>

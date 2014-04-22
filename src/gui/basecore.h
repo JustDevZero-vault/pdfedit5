@@ -24,7 +24,7 @@
 #ifndef __BASECORE_H__
 #define __BASECORE_H__
 
-#include <qobject.h>
+#include <QtCore/QObject>
 #include <boost/shared_ptr.hpp>
 #include "qtcompat.h"
 #include QPTRDICT

@@ -24,9 +24,9 @@
 #ifndef __NUMBERTOOL_H__
 #define __NUMBERTOOL_H__
 
-#include <qwidget.h>
-#include <qcombobox.h>
-#include <qstring.h>
+#include <QtWidgets/QWidget>
+#include <QtWidgets/QComboBox>
+#include <QtCore/QString>
 
 class QResizeEvent;
 class QDoubleValidator;

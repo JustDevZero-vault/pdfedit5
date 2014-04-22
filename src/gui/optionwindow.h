@@ -25,9 +25,9 @@
 #define __OPTIONWINDOW_H__
 
 #include "qtcompat.h"
-#include <qwidget.h>
+#include <QtWidgets/QWidget>
 #include QDICT
-#include <qmap.h>
+#include <QtCore/QMap>
 class QLabel;
 class QTabWidget;
 class QFrame;

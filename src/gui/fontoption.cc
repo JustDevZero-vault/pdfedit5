@@ -29,8 +29,8 @@
 */
 
 #include "fontoption.h"
-#include <qstring.h>
-#include <qfontdialog.h>
+#include <QtCore/QString>
+#include <QtWidgets/QFontDialog>
 
 namespace gui {
 

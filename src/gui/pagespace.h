@@ -25,13 +25,13 @@
 #define __PAGESPACE_H__
 
 #include "qtcompat.h"
-#include <qwidget.h>
-#include <qlabel.h>
-#include <qpushbutton.h>
-#include <qevent.h>
-#include <qlayout.h>
-#include <qmainwindow.h>
-#include <qlineedit.h>
+#include <QtWidgets/QWidget>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QPushButton>
+#include <QtCore/QEvent>
+#include <QtWidgets/QLayout>
+#include <QtWidgets/QMainWindow>
+#include <QtWidgets/QLineEdit>
 #include "pageviewS.h"
 #include "qspage.h"
 #include "qspdf.h"

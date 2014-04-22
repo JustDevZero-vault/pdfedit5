@@ -38,13 +38,13 @@
 #include "main.h"
 #include "staticsettings.h"
 #include "util.h"
-#include <qapplication.h>
-#include <qdir.h>
-#include <qregexp.h>
-#include <qsettings.h>
-#include <qsplitter.h>
-#include <qstring.h>
-#include <qstringlist.h>
+#include <QtWidgets/QApplication>
+#include <QtCore/QDir>
+#include <QtCore/QRegExp>
+#include <QtCore/QSettings>
+#include <QtWidgets/QSplitter>
+#include <QtCore/QString>
+#include <QtCore/QStringList>
 #include <stdlib.h>
 #include <utils/debug.h>
 

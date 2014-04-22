@@ -25,7 +25,7 @@
 #define __STATUSBAR_H__
 
 #include <qstatusbar.h>
-#include <qstring.h>
+#include <QtCore/QString>
 
 class QLabel;
 class QTimer;

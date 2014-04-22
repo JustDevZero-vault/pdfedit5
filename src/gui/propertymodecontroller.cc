@@ -30,7 +30,7 @@
 #include "propertymodecontroller.h"
 #include "qtcompat.h"
 #include "settings.h"
-#include <qstring.h>
+#include <QtCore/QString>
 #include <stdlib.h>
 #include <kernel/modecontroller.h>
 #include <utils/confparser.h>

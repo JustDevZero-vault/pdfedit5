@@ -24,7 +24,7 @@
 #ifndef __REFVALIDATOR_H__
 #define __REFVALIDATOR_H__
 
-#include <qvalidator.h>
+#include <QtGui/QValidator>
 class QString;
 
 namespace gui {

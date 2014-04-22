@@ -25,7 +25,7 @@
 #define __HELPWINDOW_H__
 
 #include "qtcompat.h"
-#include <qwidget.h>
+#include <QtWidgets/QWidget>
 class Q_TextBrowser;
 class QString;
 class QLineEdit;

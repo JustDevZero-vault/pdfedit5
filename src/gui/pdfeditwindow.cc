@@ -47,15 +47,15 @@
 #include "main.h"
 #include "version.h"
 #include <iostream>
-#include <qapplication.h>
-#include <qfile.h>
-#include <qfont.h>
-#include <qmenubar.h>
-#include <qmessagebox.h>
-#include <qpushbutton.h>
-#include <qregexp.h>
-#include <qsplitter.h>
-#include <qstring.h>
+#include <QtWidgets/QApplication>
+#include <QtCore/QFile>
+#include <QtGui/QFont>
+#include <QtWidgets/QMenuBar>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QPushButton>
+#include <QtCore/QRegExp>
+#include <QtWidgets/QSplitter>
+#include <QtCore/QString>
 #include <utils/debug.h>
 #include "optionwindow.h"
 

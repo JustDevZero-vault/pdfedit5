@@ -24,7 +24,7 @@
 #ifndef __PAGETOOL_H__
 #define __PAGETOOL_H__
 
-#include <qwidget.h>
+#include <QtWidgets/QWidget>
 
 class QResizeEvent;
 class QLineEdit;

@@ -26,7 +26,7 @@
 
 #include <kernel/iproperty.h>
 #include "qscobject.h"
-#include <qvariant.h>
+#include <QtCore/QVariant>
 class QString;
 
 namespace gui {

@@ -39,8 +39,8 @@
 #include "pagespace.h"
 #include "pdfeditwindow.h"
 #include "toolbar.h"
-#include <qobject.h>
-#include <qstring.h>
+#include <QtCore/QObject>
+#include <QtCore/QString>
 namespace pdfobjects {
  class CPdf;
 }

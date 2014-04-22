@@ -25,8 +25,8 @@
 #define __MULTITREEWINDOW_H__
 
 #include "qtcompat.h"
-#include <qwidget.h>
-#include <qmap.h>
+#include <QtWidgets/QWidget>
+#include <QtCore/QMap>
 #include "types.h"
 namespace pdfobjects {
  class IProperty;

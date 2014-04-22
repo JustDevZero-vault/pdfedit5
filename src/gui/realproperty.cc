@@ -29,8 +29,8 @@
 */
 
 #include "realproperty.h"
-#include <qvalidator.h>
-#include <qlineedit.h>
+#include <QtGui/QValidator>
+#include <QtWidgets/QLineEdit>
 #include <kernel/cobject.h>
 
 namespace gui {

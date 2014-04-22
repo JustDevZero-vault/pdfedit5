@@ -25,7 +25,7 @@
 #define __PASSWORDDIALOG_H__
 
 #include <qdialog.h>
-#include <qstring.h>
+#include <QtCore/QString>
 class QLineEdit;
 class QCheckBox;
 

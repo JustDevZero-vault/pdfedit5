@@ -28,13 +28,13 @@
 
 #include <utils/debug.h>
 #include "pagetool.h"
-#include <qfont.h>
-#include <qstring.h>
-#include <qlineedit.h>
-#include <qvalidator.h>
+#include <QtGui/QFont>
+#include <QtCore/QString>
+#include <QtWidgets/QLineEdit>
+#include <QtGui/QValidator>
 #include "settings.h"
 #include "util.h"
-#include <qevent.h>
+#include <QtCore/QEvent>
 
 namespace gui {
 

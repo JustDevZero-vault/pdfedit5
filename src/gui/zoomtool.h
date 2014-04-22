@@ -24,7 +24,7 @@
 #ifndef __ZOOMTOOL_H__
 #define __ZOOMTOOL_H__
 
-#include <qwidget.h>
+#include <QtWidgets/QWidget>
 
 class QResizeEvent;
 class QComboBox;

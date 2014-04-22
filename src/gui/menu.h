@@ -25,8 +25,8 @@
 #define __MENU_H__
 
 #include "qtcompat.h"
-#include <qmap.h>
-#include <qstringlist.h>
+#include <QtCore/QMap>
+#include <QtCore/QStringList>
 #include QICON
 #include "invalidmenuexception.h"
 class QMainWindow;

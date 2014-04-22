@@ -25,7 +25,7 @@
 #define __TOOLBUTTON_H__
 
 #include "qtcompat.h"
-#include <qtoolbutton.h>
+#include <QtWidgets/QToolButton>
 class QPixmap;
 class QString;
 class QIcon;

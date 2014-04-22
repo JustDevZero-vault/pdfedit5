@@ -24,7 +24,7 @@
 #ifndef __CONSOLEWRITER_H__
 #define __CONSOLEWRITER_H__
 
-#include <qwidget.h>
+#include <QtWidgets/QWidget>
 
 class QString;
 

@@ -4,14 +4,14 @@ FEATURES
 GUI
 	+ Tree
 	+ Property editor
-	+ CommandWindow - kratka zminka o skriptingu
+	+ CommandWindow - brief mention of scripting
 	+ PageSpace + mody
-	+ Konfigurovatelna menu
+	+ configurable menu
 
 SCRIPTING
-	- Vsechno je skriptovatelne
-	+ Plugin skripty
+	- Everything is scriptable
+	+ plugin scripts
 	
-COMMANDLINE = Mod bez GUI
-	+ princip funkce, "plugin skripty 
+COMMANDLINE = Mod without GUI
+	+ operating principle, "plugin scripts
 

@@ -30,10 +30,10 @@
 #include "stringproperty.h"
 #include <string>
 #include <stdlib.h>
-#include <qlineedit.h>
+#include <QtWidgets/QLineEdit>
 #include <kernel/cobject.h>
 #include "util.h"
-#include <qevent.h>
+#include <QtCore/QEvent>
 
 namespace gui {
 

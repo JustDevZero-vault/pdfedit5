@@ -33,9 +33,9 @@
 #include "version.h"
 #include <assert.h>
 #include <iostream>
-#include <qobject.h>
+#include <QtCore/QObject>
 #include QLIST
-#include <qstringlist.h>
+#include <QtCore/QStringList>
 #include <stdlib.h>
 
 using namespace std;

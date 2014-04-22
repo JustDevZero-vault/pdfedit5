@@ -24,7 +24,7 @@
 #include "pageviewS.h"
 
 #include <stdlib.h>
-#include <qpixmap.h>
+#include <QtGui/QPixmap>
 #include <assert.h>
 
 #include "util.h"

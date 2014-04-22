@@ -32,11 +32,11 @@
 #include "combooption.h"
 #include "settings.h"
 #include "util.h"
-#include <qcombobox.h>
-#include <qstring.h>
-#include <qstringlist.h>
+#include <QtWidgets/QComboBox>
+#include <QtCore/QString>
+#include <QtCore/QStringList>
 #include <utils/debug.h>
-#include <qevent.h>
+#include <QtCore/QEvent>
 
 namespace gui {
 

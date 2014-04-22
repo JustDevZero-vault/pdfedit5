@@ -31,7 +31,7 @@
 #include "qscobject.h"
 #include "qtcompat.h"
 #include <utils/debug.h>
-#include <qstring.h>
+#include <QtCore/QString>
 #include "util.h"
 #include "nullpointerexception.h"
 

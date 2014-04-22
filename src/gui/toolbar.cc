@@ -30,7 +30,7 @@
 
 #include "toolbar.h"
 #include "toolbutton.h"
-#include <qstring.h>
+#include <QtCore/QString>
 
 namespace gui {
 

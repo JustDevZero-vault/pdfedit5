@@ -24,7 +24,7 @@
 #ifndef __SELFDESTRUCTIVEWIDGET_H__
 #define __SELFDESTRUCTIVEWIDGET_H__
 
-#include <qwidget.h>
+#include <QtWidgets/QWidget>
 #include "qtcompat.h"
 
 namespace gui {

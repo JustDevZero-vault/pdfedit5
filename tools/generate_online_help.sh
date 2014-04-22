@@ -1,5 +1,6 @@
 #!/bin/sh
-# PDFedit - free program for PDF document manipulation.
+# PDFedit5 - free program for PDF document manipulation.
+# Copyright (C) 2014  PDFedit5: Daniel Ripoll
 # Copyright (C) 2006-2009  PDFedit team: Michal Hocko,
 #                                        Jozef Misutka,
 #                                        Martin Petricek
@@ -19,7 +20,7 @@
 # Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, 
 # MA  02111-1307  USA
 #
-# Project is hosted on http://sourceforge.net/projects/pdfedit
+# Project is hosted on http://github.com/mephiston/pdfedit5
 
 print_usage()
 {
@@ -55,7 +56,7 @@ fi
 # Check whether documentation is already generated and
 # exit if so (unless we are forced - 3rd parameter is 
 # present
-if [ -f ${GUI_DIR}/help/pdfedit.html ]
+if [ -f ${GUI_DIR}/help/pdfedit5.html ]
 then
 	if [ $# -ge 3 ]
 	then

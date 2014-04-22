@@ -27,10 +27,10 @@
 */
 
 #include "imagewidget.h"
-#include <qevent.h>
-#include <qcolor.h>
-#include <qpixmap.h>
-#include <qpainter.h>
+#include <QtCore/QEvent>
+#include <QtGui/QColor>
+#include <QtGui/QPixmap>
+#include <QtGui/QPainter>
 #include <assert.h>
 
 namespace gui {

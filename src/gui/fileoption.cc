@@ -29,7 +29,7 @@
 
 #include "fileoption.h"
 #include "dialog.h"
-#include <qstring.h>
+#include <QtCore/QString>
 
 namespace gui {
 

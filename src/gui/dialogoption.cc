@@ -31,10 +31,10 @@
 
 #include "dialogoption.h"
 #include <utils/debug.h>
-#include <qstring.h>
-#include <qpushbutton.h>
-#include <qlineedit.h>
-#include <qevent.h>
+#include <QtCore/QString>
+#include <QtWidgets/QPushButton>
+#include <QtWidgets/QLineEdit>
+#include <QtCore/QEvent>
 #include "settings.h"
 #include "util.h"
 

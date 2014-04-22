@@ -25,7 +25,7 @@
 #define __ANNOTDIALOG_H__
 
 #include "qtcompat.h"
-#include <qvariant.h>
+#include <QtCore/QVariant>
 #include <qdialog.h>
 #include "qspage.h"
 #include "kernel/static.h"

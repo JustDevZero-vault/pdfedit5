@@ -1,0 +1,18 @@
+NOT PORTED TO QT5, investigate:
+
+aboutwindow.cc:#include <qsaglobal.h>
+base.cc:#include <qsinterpreter.h>
+basecore.cc:#include <qsinterpreter.h>
+basecore.cc:#include <qsutilfactory.h>
+basecore.cc:#include <qsinputdialogfactory.h>
+commandwindow.cc:#include <qseditor.h>
+commandwindow.cc:#include <qsinterpreter.h>
+draglistview.cc:#include <qdragobject.h>
+menu.cc:#include <qmenudata.h>
+pagespace.cc://#include <qdockarea.h>
+propertyeditor.cc:#include <qgrid.h>
+qsimporter.cc:#include <qsinterpreter.h>
+qsimporter.cc:#include <qsproject.h>
+qsiproperty.cc:#include <qsimporter.h>
+qsstream.cc:#include <qcstring.h>
+toolbutton.cc:#include <qiconset.h>

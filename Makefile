@@ -23,7 +23,7 @@ install:  $(INSTALL_TARGET) doc-dist-install
 
 install-no:
 	@echo There is no installation target defined!!! You probably have
-	@echo not configured PDFedit with installation target. 
+	@echo not configured PDFedit5 with installation target. 
 	exit 1
 
 # Installs gui part
@@ -36,7 +36,7 @@ install-gui: source
 # Installs core development package consisting of header files and
 # configuration script for 3rd party applications depending on kernel
 # (non-GUI) functionality
-install-core-dev: pdfedit-core-dev
+install-core-dev: pdfedit5-core-dev
 	$(MKDIR) $(INSTALL_ROOT)$(INCLUDE_PATH)
 	$(MKDIR) $(INSTALL_ROOT)$(LIB_PATH)
 	cd $(XPDFROOT) && $(MAKE) install-dev
@@ -51,7 +51,7 @@ uninstall:  $(UNINSTALL_TARGET) uninstall-gui doc-dist-uninstall
 
 uninstall-no:
 	@echo There is no uninstallation target defined!!! You probably have
-	@echo not configured PDFedit with installation target so that 
+	@echo not configured PDFedit5 with installation target so that 
 	@echo uninstallation is neither evailable. 
 	exit 1
 
@@ -90,9 +90,9 @@ doc-dist-uninstall:
 source: 
 	cd $(SRCROOT) && $(MAKE)
 
-# make all static libraries for pdfedit-core-dev package
-pdfedit-core-dev:
-	cd $(SRCROOT) && $(MAKE) pdfedit-core-dev
+# make all static libraries for pdfedit5-core-dev package
+pdfedit5-core-dev:
+	cd $(SRCROOT) && $(MAKE) pdfedit5-core-dev
 
 cscope:
 	( git ls-files '*.[h,c]' '*.cc' '*.cpp' 2>/dev/null || find . \( -name .git -type d -prune \) -o \( -name '*.[h,c]' -type f -print \) -o \( -name '*.cpp' -type f -print \) -o \( -name "*.cc" -type f -print \) ) | xargs cscope -b

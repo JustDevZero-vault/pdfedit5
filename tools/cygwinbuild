@@ -1,5 +1,6 @@
 #!/bin/sh
-# PDFedit - free program for PDF document manipulation.
+# PDFedit5 - free program for PDF document manipulation.
+# Copyright (C) 2014  PDFedit5: Daniel Ripoll
 # Copyright (C) 2006-2009  PDFedit team: Michal Hocko,
 #                                        Jozef Misutka,
 #                                        Martin Petricek
@@ -19,18 +20,18 @@
 # Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, 
 # MA  02111-1307  USA
 #
-# Project is hosted on http://sourceforge.net/projects/pdfedit
+# Project is hosted on http://github.com/mephiston/pdfedit5
 
 autoconf
-export INSTALL_ROOT=/tmp/pdfedit-package
+export INSTALL_ROOT=/tmp/pdfedit5-package
 ./configure --with-root-dir=$INSTALL_ROOT/ && make
 cd src/gui
 make -f Makefile.gui menugenerator && ./make-lang
-strip pdfedit.exe
+strip pdfedit5.exe
 cd ../..
 mkdir -p $INSTALL_ROOT
 make install
 cp -f doc/README.cygwin $INSTALL_ROOT/readme.txt
 VERSION=`./getversion -v`
 cd $INSTALL_ROOT
-echo 7z a -mx -r -tzip -x!*.bat -x!*.zip pdfedit-$VERSION-cygwin.zip >pack.bat
+echo 7z a -mx -r -tzip -x!*.bat -x!*.zip pdfedit5-$VERSION-cygwin.zip >pack.bat

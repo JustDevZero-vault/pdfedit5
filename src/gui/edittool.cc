@@ -29,7 +29,7 @@
 #include "edittool.h"
 #include "settings.h"
 #include <utils/debug.h>
-#include <qevent.h>
+#include <QtCore/QEvent>
 
 namespace gui {
 

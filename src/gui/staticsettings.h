@@ -24,8 +24,8 @@
 #ifndef __STATICSETTINGS_H__
 #define __STATICSETTINGS_H__
 
-#include <qmap.h>
-#include <qstring.h>
+#include <QtCore/QMap>
+#include <QtCore/QString>
 
 class QStringList;
 

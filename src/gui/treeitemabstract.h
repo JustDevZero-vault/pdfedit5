@@ -27,7 +27,7 @@
 #include "qtcompat.h"
 #include QLISTVIEW
 #include QDICT
-#include <qmap.h>
+#include <QtCore/QMap>
 
 class QStringList;
 class QString;

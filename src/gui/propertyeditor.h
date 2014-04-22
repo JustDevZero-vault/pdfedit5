@@ -27,8 +27,8 @@
 #include <qobjectlist.h>
 #include "qtcompat.h"
 #include QDICT
-#include <qmap.h>
-#include <qwidget.h>
+#include <QtCore/QMap>
+#include <QtWidgets/QWidget>
 #include <kernel/iproperty.h>
 #include <kernel/pdfoperators.h>
 

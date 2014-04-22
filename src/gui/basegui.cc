@@ -61,11 +61,11 @@
 #include "util.h"
 #include "version.h"
 #include <string.h>
-#include <qapplication.h>
-#include <qdir.h>
-#include <qfile.h>
-#include <qmessagebox.h>
-#include <qsplitter.h>
+#include <QtWidgets/QApplication>
+#include <QtCore/QDir>
+#include <QtCore/QFile>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QSplitter>
 #include <utils/debug.h>
 
 namespace gui {

@@ -27,7 +27,7 @@
  @author Martin Petricek
 */
 
-#include <qstring.h>
+#include <QtCore/QString>
 #include "invalidmenuexception.h"
 
 namespace gui {

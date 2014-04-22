@@ -1,5 +1,6 @@
 #!/bin/bash
-# PDFedit - free program for PDF document manipulation.
+# PDFedit5 - free program for PDF document manipulation.
+# Copyright (C) 2014  PDFedit5: Daniel Ripoll
 # Copyright (C) 2006-2009  PDFedit team: Michal Hocko,
 #                                        Jozef Misutka,
 #                                        Martin Petricek
@@ -19,7 +20,7 @@
 # Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, 
 # MA  02111-1307  USA
 #
-# Project is hosted on http://sourceforge.net/projects/pdfedit
+# Project is hosted on http://github.com/mephiston/pdfedit55
 
 ###############################################################################
 # Helper script for CPPUnit testing
@@ -42,37 +43,37 @@
 #
 # Examples:
 # 1) We want to simply run all test suites from kernel test for all pdf 
-#    documents in the testset directory (we are in pdfedit root tree):
+#    documents in the testset directory (we are in pdfedit5 root tree):
 #  
 #	$ cd src/tests/kernel && \
-#		$PDFEDIT_ROOT/check_files.sh $PDFEDIT_ROOT/testset/*.pdf
+#		$PDFEDIT5_ROOT/check_files.sh $PDFEDIT5_ROOT/testset/*.pdf
 #
-#    Same can be done like this from $PDFEDIT_ROOT
+#    Same can be done like this from $PDFEDIT5_ROOT
 #	$ tools/check_files.sh -b src/tests/kernel/test_bin -d src/tests/kernel\
-#		$PDFEDIT_ROOT/tests/*.pdf
+#		$PDFEDIT5_ROOT/tests/*.pdf
 #
 # 2) We want to run specific test suits (lets say TEST_CPDF and TEST_STREAM)
 #
 #	$ cd src/tests/kernel && \
-#		$PDFEDIT_ROOT/check_files.sh -t "TEST_CPDF TEST_STREAM" \
-#		$PDFEDIT_ROOT/testset/*.pdf
+#		$PDFEDIT5_ROOT/check_files.sh -t "TEST_CPDF TEST_STREAM" \
+#		$PDFEDIT5_ROOT/testset/*.pdf
 #
 #    Note that test suits have to be quoted for -t parameter.
 #
 # 3) We want to set debug level for test binary to have more information
 #
 #	$ cd src/tests/kernel && \
-#		$PDFEDIT_ROOT/check_files.sh -p "-debug_level 5 -all" \
-#		$PDFEDIT_ROOT/testset/*.pdf
+#		$PDFEDIT5_ROOT/check_files.sh -p "-debug_level 5 -all" \
+#		$PDFEDIT5_ROOT/testset/*.pdf
 #
 #    Note that test binary parameters to be quoted for -p parameter.
 #
 # 4) We want to keep log files apart from current directory
 #
-#	$ [ -d /tmp/pdfedit.logs ] && mkdir /tmp/pdfedit.logs
+#	$ [ -d /tmp/pdfedit5.logs ] && mkdir /tmp/pdfedit5.logs
 #	$ cd src/tests/kernel && \
-#		-l /tmp/pdfedit.logs \
-#		$PDFEDIT_ROOT/testset/*.pdf
+#		-l /tmp/pdfedit5.logs \
+#		$PDFEDIT5_ROOT/testset/*.pdf
 #
 ###############################################################################
 

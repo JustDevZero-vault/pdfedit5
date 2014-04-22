@@ -26,14 +26,14 @@
 #include <stdlib.h>
 #include <math.h>
 
-#include <qlabel.h>
-#include <qstring.h>
-#include <qmap.h>
-#include <qpixmap.h>
-#include <qimage.h>
+#include <QtWidgets/QLabel>
+#include <QtCore/QString>
+#include <QtCore/QMap>
+#include <QtGui/QPixmap>
+#include <QtGui/QImage>
 //#include <qdockarea.h>
-#include <qfiledialog.h>
-#include <qmessagebox.h>
+#include <QtWidgets/QFileDialog>
+#include <QtWidgets/QMessageBox>
 #include QSTRLIST
 
 #include "settings.h"

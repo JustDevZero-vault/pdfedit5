@@ -34,13 +34,13 @@
 #include "refvalidator.h"
 #include "util.h"
 #include <kernel/cobject.h>
-#include <qcolor.h>
-#include <qlineedit.h>
-#include <qpushbutton.h>
+#include <QtGui/QColor>
+#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QPushButton>
 #include <stdlib.h>
 #include <string>
 #include <utils/debug.h>
-#include <qevent.h>
+#include <QtCore/QEvent>
 
 namespace gui {
 

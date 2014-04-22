@@ -34,7 +34,7 @@
 
 #include "qtcompat.h"
 #include <vector>
-#include <qvariant.h>
+#include <QtCore/QVariant>
 #include <qdialog.h>
 #include <qfiledialog.h>
 

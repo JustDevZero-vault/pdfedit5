@@ -38,7 +38,7 @@
 #include "qsipropertyarray.h"
 #include <kernel/ccontentstream.h>
 #include <utils/iterator.h>
-#include <qstring.h>
+#include <QtCore/QString>
 #include "util.h"
 #include QLIST
 

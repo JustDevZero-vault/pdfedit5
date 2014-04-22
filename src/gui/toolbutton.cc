@@ -28,8 +28,8 @@
 */
 #include "toolbutton.h"
 #include <qiconset.h>
-#include <qpixmap.h>
-#include <qstring.h>
+#include <QtGui/QPixmap>
+#include <QtCore/QString>
 #include "util.h"
 
 namespace gui {

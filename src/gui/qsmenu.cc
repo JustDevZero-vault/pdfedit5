@@ -31,7 +31,7 @@
 #include "qsmenu.h"
 #include <assert.h>
 #include QPOPUPMENU
-#include <qcursor.h>
+#include <QtGui/QCursor>
 #include "menu.h"
 #include "util.h"
 #include <utils/debug.h>

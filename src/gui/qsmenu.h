@@ -24,9 +24,9 @@
 #ifndef __QSMENU_H__
 #define __QSMENU_H__
 
-#include <qobject.h>
+#include <QtCore/QObject>
 #include "qscobject.h"
-#include <qstringlist.h>
+#include <QtCore/QStringList>
 #include "qtcompat.h"
 
 class Q_PopupMenu;

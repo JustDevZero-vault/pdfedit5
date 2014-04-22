@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/icon">
+        <file alias="pdfedit_logo.png">icon/pdfedit_logo.png</file>
+        <file alias="pdf_edit_icon_16.png">icon/pdfedit_icon_16.png</file>
+    </qresource>
+</RCC>

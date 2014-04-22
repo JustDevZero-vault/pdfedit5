@@ -34,11 +34,11 @@
 #include "treeitemabstract.h"
 #include "treewindow.h"
 #include "util.h"
-#include <qcursor.h>
-#include <qlayout.h>
+#include <QtGui/QCursor>
+#include <QtWidgets/QLayout>
 #include QPOPUPMENU
-#include <qtabwidget.h>
-#include <qtoolbutton.h>
+#include <QtWidgets/QTabWidget>
+#include <QtWidgets/QToolButton>
 #include <utils/debug.h>
 
 namespace gui {

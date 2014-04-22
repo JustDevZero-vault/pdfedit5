@@ -24,7 +24,7 @@
 #ifndef __QSCOBJECT_H__
 #define __QSCOBJECT_H__
 
-#include <qobject.h>
+#include <QtCore/QObject>
 #include <boost/shared_ptr.hpp>
 #include "basecore.h"
 class QString;

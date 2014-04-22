@@ -26,10 +26,10 @@
 
 #include "base.h"
 #include "annotdialog.h"
-#include <qmap.h>
-#include <qobject.h>
-#include <qstring.h>
-#include <qvariant.h>
+#include <QtCore/QMap>
+#include <QtCore/QObject>
+#include <QtCore/QString>
+#include <QtCore/QVariant>
 
 class QProgressBar;
 
