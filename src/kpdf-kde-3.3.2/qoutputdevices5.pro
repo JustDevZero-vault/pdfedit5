@@ -30,9 +30,8 @@ contains( E_RELEASE, yes ) {
  CONFIG *= release
 }
 
-#Needed for Qt4. Qt3's Qmake does not know this variable, so it is ignored
-#Note Qt4 is not (yet) supported
-QT += qt3support
+#Needed for Qt5
+QT += gui widgets core
 
 # include headers from kernel and used by kernel
 INCPATH += $(MANDATORY_PATHS)

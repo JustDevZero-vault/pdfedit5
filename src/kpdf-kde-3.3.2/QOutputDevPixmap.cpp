@@ -5,7 +5,7 @@
  *                           <helio@conectiva.com.br>                      *
  *   Copyright (C) 2003 by Dirk Mueller <mueller@kde.org>                  *
  *   Copyright (C) 2003 by Scott Wheeler <wheeler@kde.org>                 *
- *   Copyright (C) 2003 by Ingo Klöcker <kloecker@kde.org>                 *
+ *   Copyright (C) 2003 by Ingo KlÃ¶cker <kloecker@kde.org>                 *
  *   Copyright (C) 2003 by Andy Goossens <andygoossens@telenet.be>         *
  *   Copyright (C) 2004 by Dominique Devriese <devriese@kde.org>           *
  *   Copyright (C) 2004 by Albert Astals Cid <tsdgeos@terra.es>            *
@@ -21,10 +21,10 @@
 #endif
 
 #include <stdlib.h>
-#include <xpdf/GfxState.h>
+#include <poppler/poppler/GfxState.h>
 
-#include <qpixmap.h>
-#include <qimage.h>
+#include <QtGui/QPixmap>
+#include <QtGui/QImage>
 
 //#include <kdebug.h>
 

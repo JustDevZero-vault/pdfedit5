@@ -1,5 +1,5 @@
 #makefile for PDF editor
-.PHONY: distclean clean pdfedit kernel xpdf kpdf-kde-3.3.2 utils qoutputdevices qsa qsa_configure qsa4 qsa4_configure gui
+.PHONY: distclean clean pdfedit kernel xpdf kpdf-kde-3.3.2 utils qoutputdevices5 qsa qsa_configure qsa4 qsa4_configure gui
 
 # includes basic building rules
 # REL_ADDR has to be defined, because Makefile.rules refers 
@@ -20,7 +20,7 @@ xpdf-extra:
 	cd $(XPDFROOT) && $(MAKE) extralib
 
 # PDF editor
-pdfedit: utils kernel xpdf qoutputdevices qsa $(GUIROOT)/Makefile.qt
+pdfedit: utils kernel xpdf qoutputdevices5 qsa $(GUIROOT)/Makefile.qt
 	cd $(GUIROOT) && $(MAKE) -f Makefile.gui
 
 # PDFedit core development package for 3rd party code
@@ -56,7 +56,7 @@ $(GUIROOT)/Makefile.qt: $(GUIROOT)/Makefile.gui $(GUIROOT)/pdfedit.pro
 qoutputdevices: xpdf $(QOUTPUTDEVROOT)/Makefile.qt
 	cd $(QOUTPUTDEVROOT) && $(MAKE) -f Makefile.gui staticlib
 
-$(QOUTPUTDEVROOT)/Makefile.qt: $(QOUTPUTDEVROOT)/Makefile.gui $(QOUTPUTDEVROOT)/qoutputdevices.pro
+$(QOUTPUTDEVROOT)/Makefile.qt: $(QOUTPUTDEVROOT)/Makefile.gui $(QOUTPUTDEVROOT)/qoutputdevices5.pro
 	cd $(QOUTPUTDEVROOT) && $(QMAKE) -o Makefile.qt
 
 # Utils

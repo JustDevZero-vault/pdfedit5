@@ -19,7 +19,8 @@
 #pragma interface
 #endif
 
-#include <qimage.h>
+#include <QtGui/QImage>
+
 
 #include "QOutputDev.h"
 
@@ -37,7 +38,7 @@ public:
 	// End a page
 	virtual void endPage();
 
-	QImage getImage() const { return m_image; };
+    QImage getImage() const { return m_image; }/*;*/
 
 private:
 	QImage m_image;

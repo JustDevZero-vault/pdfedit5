@@ -1,0 +1,1310 @@
+diff -urN poppler/CVS/Entries poppler-qt/CVS/Entries
+--- poppler/CVS/Entries	2005-03-16 10:33:40.000000000 -0500
++++ poppler-qt/CVS/Entries	2005-03-16 15:51:43.000000000 -0500
+@@ -13,4 +13,8 @@
+ /poppler-cairo.pc.in/1.1.1.1/Thu Mar  3 19:45:58 2005//
+ /poppler-splash.pc.in/1.1.1.1/Thu Mar  3 19:45:58 2005//
+ /poppler.pc.in/1.1.1.1/Thu Mar  3 19:45:58 2005//
+-D
++D/fofi////
++D/goo////
++D/poppler////
++D/splash////
++D/test////
+diff -urN poppler/CVS/Entries.Log poppler-qt/CVS/Entries.Log
+--- poppler/CVS/Entries.Log	2005-03-16 10:33:46.000000000 -0500
++++ poppler-qt/CVS/Entries.Log	1969-12-31 19:00:00.000000000 -0500
+@@ -1,5 +0,0 @@
+-A D/fofi////
+-A D/goo////
+-A D/poppler////
+-A D/splash////
+-A D/test////
+diff -urN poppler/Makefile.am poppler-qt/Makefile.am
+--- poppler/Makefile.am	2005-03-03 14:45:58.000000000 -0500
++++ poppler-qt/Makefile.am	2005-03-16 23:07:47.000000000 -0500
+@@ -2,13 +2,14 @@
+ splash_subdir = splash
+ endif
+ 
+-SUBDIRS = goo fofi $(splash_subdir) poppler test
++SUBDIRS = goo fofi $(splash_subdir) poppler test qt
+ 
+ EXTRA_DIST =					\
+ 	README-XPDF				\
+ 	poppler.pc.in				\
+ 	poppler-cairo.pc.in			\
+-	poppler-splash.pc.in
++	poppler-splash.pc.in			\
++	poppler-qt.pc.in
+ 
+ if BUILD_SPLASH_OUTPUT
+ 
+@@ -22,8 +23,15 @@
+ 
+ endif
+ 
++if HAVE_QT
++
++qt_pc_file = poppler-qt.pc
++
++endif
++
+ pkgconfigdir = $(libdir)/pkgconfig
+ pkgconfig_DATA =				\
+ 	poppler.pc				\
+ 	$(cairo_pc_file)			\
+-	$(splash_pc_file)
++	$(splash_pc_file)			\
++	$(qt_pc_file)
+diff -urN poppler/configure.ac poppler-qt/configure.ac
+--- poppler/configure.ac	2005-03-11 16:42:52.000000000 -0500
++++ poppler-qt/configure.ac	2005-03-16 23:09:16.000000000 -0500
+@@ -82,6 +82,62 @@
+   AC_DEFINE(HAVE_FSEEK64)
+ fi
+ 
++AC_ARG_ENABLE(qt,               [  --enable-qt           enable Qt-friendly client library],enable_qt=$enableval,enable_qt=auto)
++# Qt detection
++AC_PATH_PROG(QT_MOC, moc, no)
++
++have_qt=no
++AC_MSG_CHECKING([for qglobal.h])
++if test -n "$QTDIR" -a -f "$QTDIR/include/qglobal.h"; then
++    have_qt=yes
++    POPPLER_QT_CXXFLAGS="-I$QTDIR/include"
++else
++    for dir in "${prefix}/include/qt" "/usr/include/qt-3.1" "/usr/include/qt3" "/usr/include/qt" "/usr/lib/qt/include" "/usr/lib/qt-3.1/include"; do
++        if test -f "$dir/qglobal.h"; then
++            have_qt=yes
++            POPPLER_QT_CXXFLAGS="-I$dir"
++       fi
++    done
++fi
++if test x"$have_qt" = x"yes"; then
++   AC_MSG_RESULT([found])
++else
++   AC_MSG_RESULT([not found])
++fi
++
++dnl linking to kdecore will give us a bit of help from libtool
++if (! kde-config >& /dev/null); then
++    have_qt=no
++else
++    kdelibs=`kde-config --install lib --expandvars 2>/dev/null`
++    if test -z $kdelibs -o ! -f $kdelibs/libkdecore.la; then
++        have_qt=no
++    else
++        POPPLER_QT_LIBS="$kdelibs/libkdecore.la"
++    fi
++fi
++
++if test x$have_qt = xno ; then
++    AC_MSG_WARN([Qt development libraries not found])
++fi
++
++if test x$enable_qt = xyes; then
++    if test x$have_qt = xno; then
++	AC_MSG_ERROR([Qt integration explicitly required, and Qt libraries not found])
++    fi
++fi
++
++if test x$enable_qt = xno; then
++   have_qt=no;
++fi
++
++AM_CONDITIONAL(HAVE_QT, test x$have_qt = xyes)
++
++dnl Qt flags
++AC_SUBST(POPPLER_QT_CXXFLAGS)
++AC_SUBST(POPPLER_QT_LIBS)
++
++
+ 
+ dnl Test for libjpeg
+ AC_ARG_ENABLE(libjpeg,
+@@ -196,13 +252,16 @@
+ splash/Makefile
+ poppler/Makefile
+ test/Makefile
++qt/Makefile
+ poppler.pc
+ poppler-cairo.pc
+-poppler-splash.pc])
++poppler-splash.pc
++poppler-qt.pc])
+ 
+ 
+ echo ""
+ echo "Building poppler with support for:"
+ echo "  splash output: $enable_splash_output"
+ echo "  cairo output:  $enable_cairo_output"
++echo "  qt libary:     $enable_qt"
+ echo "  use libjpeg:   $enable_libjpeg"
+Binary files poppler/poppler/.Catalog.cc.swp and poppler-qt/poppler/.Catalog.cc.swp differ
+diff -urN poppler/poppler/CVS/Entries poppler-qt/poppler/CVS/Entries
+--- poppler/poppler/CVS/Entries	2005-03-16 10:33:45.000000000 -0500
++++ poppler-qt/poppler/CVS/Entries	2005-03-16 21:26:59.000000000 -0500
+@@ -65,7 +65,6 @@
+ /Outline.h/1.1.1.1/Thu Mar  3 19:46:01 2005//
+ /OutputDev.cc/1.1.1.1/Thu Mar  3 19:46:03 2005//
+ /OutputDev.h/1.1.1.1/Thu Mar  3 19:46:01 2005//
+-/PDFDoc.cc/1.1.1.1/Thu Mar  3 19:46:03 2005//
+ /PDFDoc.h/1.1.1.1/Thu Mar  3 19:46:01 2005//
+ /PDFDocEncoding.cc/1.1.1.1/Thu Mar  3 19:46:03 2005//
+ /PDFDocEncoding.h/1.1.1.1/Thu Mar  3 19:46:01 2005//
+@@ -93,4 +92,5 @@
+ /XRef.cc/1.1.1.1/Thu Mar  3 19:46:04 2005//
+ /XRef.h/1.1.1.1/Thu Mar  3 19:46:01 2005//
+ /poppler-config.h.in/1.1.1.1/Thu Mar  3 19:46:01 2005//
++/PDFDoc.cc/1.1.1.1/Thu Mar 17 02:26:59 2005//
+ D
+diff -urN poppler/poppler/PDFDoc.h.orig poppler-qt/poppler/PDFDoc.h.orig
+--- poppler/poppler/PDFDoc.h.orig	1969-12-31 19:00:00.000000000 -0500
++++ poppler-qt/poppler/PDFDoc.h.orig	2005-03-16 11:42:23.000000000 -0500
+@@ -0,0 +1,176 @@
++//========================================================================
++//
++// PDFDoc.h
++//
++// Copyright 1996-2003 Glyph & Cog, LLC
++//
++//========================================================================
++
++#ifndef PDFDOC_H
++#define PDFDOC_H
++
++#ifdef USE_GCC_PRAGMAS
++#pragma interface
++#endif
++
++#include <stdio.h>
++#include "XRef.h"
++#include "Link.h"
++#include "Catalog.h"
++#include "Page.h"
++#include "Annot.h"
++
++class GooString;
++class BaseStream;
++class OutputDev;
++class Links;
++class LinkAction;
++class LinkDest;
++class Outline;
++
++//------------------------------------------------------------------------
++// PDFDoc
++//------------------------------------------------------------------------
++
++class PDFDoc {
++public:
++
++  PDFDoc(GooString *fileNameA, GooString *ownerPassword = NULL,
++	 GooString *userPassword = NULL);
++  PDFDoc(BaseStream *strA, GooString *ownerPassword = NULL,
++	 GooString *userPassword = NULL);
++  ~PDFDoc();
++
++  // Was PDF document successfully opened?
++  GBool isOk() { return ok; }
++
++  // Get the error code (if isOk() returns false).
++  int getErrorCode() { return errCode; }
++
++  // Get file name.
++  GooString *getFileName() { return fileName; }
++
++  // Get the xref table.
++  XRef *getXRef() { return xref; }
++
++  // Get catalog.
++  Catalog *getCatalog() { return catalog; }
++
++  // Get base stream.
++  BaseStream *getBaseStream() { return str; }
++
++  // Get page parameters.
++  double getPageWidth(int page)
++    { return catalog->getPage(page)->getWidth(); }
++  double getPageHeight(int page)
++    { return catalog->getPage(page)->getHeight(); }
++  int getPageRotate(int page)
++    { return catalog->getPage(page)->getRotate(); }
++
++  // Get number of pages.
++  int getNumPages() { return catalog->getNumPages(); }
++
++  // Return the contents of the metadata stream, or NULL if there is
++  // no metadata.
++  GooString *readMetadata() { return catalog->readMetadata(); }
++
++  // Return the structure tree root object.
++  Object *getStructTreeRoot() { return catalog->getStructTreeRoot(); }
++
++  // Display a page.
++  void displayPage(OutputDev *out, int page, double hDPI, double vDPI,
++		   int rotate, GBool crop, GBool doLinks,
++		   GBool (*abortCheckCbk)(void *data) = NULL,
++		   void *abortCheckCbkData = NULL,
++                   GBool (*annotDisplayDecideCbk)(Annot *annot, void *user_data) = NULL,
++                   void *annotDisplayDecideCbkData = NULL);
++
++  // Display a range of pages.
++  void displayPages(OutputDev *out, int firstPage, int lastPage,
++		    double hDPI, double vDPI, int rotate,
++		    GBool crop, GBool doLinks,
++		    GBool (*abortCheckCbk)(void *data) = NULL,
++		    void *abortCheckCbkData = NULL,
++                    GBool (*annotDisplayDecideCbk)(Annot *annot, void *user_data) = NULL,
++                    void *annotDisplayDecideCbkData = NULL);
++
++  // Display part of a page.
++  void displayPageSlice(OutputDev *out, int page,
++			double hDPI, double vDPI,
++			int rotate, GBool crop,
++			int sliceX, int sliceY, int sliceW, int sliceH,
++			GBool (*abortCheckCbk)(void *data) = NULL,
++			void *abortCheckCbkData = NULL,
++                        GBool (*annotDisplayDecideCbk)(Annot *annot, void *user_data) = NULL,
++                        void *annotDisplayDecideCbkData = NULL);
++
++  // Find a page, given its object ID.  Returns page number, or 0 if
++  // not found.
++  int findPage(int num, int gen) { return catalog->findPage(num, gen); }
++
++  // If point <x>,<y> is in a link, return the associated action;
++  // else return NULL.
++  LinkAction *findLink(double x, double y)
++    { return links ? links->find(x, y) : (LinkAction *)NULL; }
++
++  // Return true if <x>,<y> is in a link.
++  GBool onLink(double x, double y) { return links->onLink(x, y); }
++
++  // Find a named destination.  Returns the link destination, or
++  // NULL if <name> is not a destination.
++  LinkDest *findDest(GooString *name)
++    { return catalog->findDest(name); }
++
++#ifndef DISABLE_OUTLINE
++  // Return the outline object.
++  Outline *getOutline() { return outline; }
++#endif
++
++  // Is the file encrypted?
++  GBool isEncrypted() { return xref->isEncrypted(); }
++
++  // Check various permissions.
++  GBool okToPrint(GBool ignoreOwnerPW = gFalse)
++    { return xref->okToPrint(ignoreOwnerPW); }
++  GBool okToChange(GBool ignoreOwnerPW = gFalse)
++    { return xref->okToChange(ignoreOwnerPW); }
++  GBool okToCopy(GBool ignoreOwnerPW = gFalse)
++    { return xref->okToCopy(ignoreOwnerPW); }
++  GBool okToAddNotes(GBool ignoreOwnerPW = gFalse)
++    { return xref->okToAddNotes(ignoreOwnerPW); }
++
++  // Is this document linearized?
++  GBool isLinearized();
++
++  // Return the document's Info dictionary (if any).
++  Object *getDocInfo(Object *obj) { return xref->getDocInfo(obj); }
++  Object *getDocInfoNF(Object *obj) { return xref->getDocInfoNF(obj); }
++
++  // Return the PDF version specified by the file.
++  double getPDFVersion() { return pdfVersion; }
++
++  // Save this file with another name.
++  GBool saveAs(GooString *name);
++
++private:
++
++  GBool setup(GooString *ownerPassword, GooString *userPassword);
++  void checkHeader();
++  void getLinks(Page *page);
++
++  GooString *fileName;
++  FILE *file;
++  BaseStream *str;
++  double pdfVersion;
++  XRef *xref;
++  Catalog *catalog;
++  Links *links;
++#ifndef DISABLE_OUTLINE
++  Outline *outline;
++#endif
++
++  GBool ok;
++  int errCode;
++};
++
++#endif
+diff -urN poppler/poppler/Page.cc poppler-qt/poppler/Page.cc
+--- poppler/poppler/Page.cc	2005-03-03 14:46:03.000000000 -0500
++++ poppler-qt/poppler/Page.cc	2005-03-16 23:53:12.000000000 -0500
+@@ -184,6 +184,14 @@
+   // get attributes
+   attrs = attrsA;
+ 
++  // transtion
++  pageDict->lookupNF("Trans", &trans);
++  if (!(trans.isDict() || trans.isNull())) {
++    error(-1, "Page transition object (page %d) is wrong type (%s)",
++	  num, annots.getTypeName());
++    trans.free();
++  }
++
+   // annotations
+   pageDict->lookupNF("Annots", &annots);
+   if (!(annots.isRef() || annots.isArray() || annots.isNull())) {
+@@ -213,6 +221,8 @@
+   
+   return;
+ 
++ err3:
++  trans.initNull();
+  err2:
+   annots.initNull();
+  err1:
+diff -urN poppler/poppler/Page.h poppler-qt/poppler/Page.h
+--- poppler/poppler/Page.h	2005-03-03 14:46:01.000000000 -0500
++++ poppler-qt/poppler/Page.h	2005-03-16 23:52:39.000000000 -0500
+@@ -143,6 +143,9 @@
+   // Get thumb.
+   Object *getThumb(Object *obj) { return thumb.fetch(xref, obj); }
+ 
++  // Get transition.
++  Object *getTrans(Object *obj) { return trans.fetch(xref, obj); }
++
+   // Display a page.
+   void display(OutputDev *out, double hDPI, double vDPI,
+ 	       int rotate, GBool crop,
+@@ -170,6 +173,7 @@
+   Object annots;		// annotations array
+   Object contents;		// page contents
+   Object thumb;			// page thumbnail
++  Object trans;			// page transition
+   GBool ok;			// true if page is valid
+ };
+ 
+diff -urN poppler/poppler/Page.h.orig poppler-qt/poppler/Page.h.orig
+--- poppler/poppler/Page.h.orig	1969-12-31 19:00:00.000000000 -0500
++++ poppler-qt/poppler/Page.h.orig	2005-03-16 11:42:23.000000000 -0500
+@@ -0,0 +1,176 @@
++//========================================================================
++//
++// Page.h
++//
++// Copyright 1996-2003 Glyph & Cog, LLC
++//
++//========================================================================
++
++#ifndef PAGE_H
++#define PAGE_H
++
++#ifdef USE_GCC_PRAGMAS
++#pragma interface
++#endif
++
++#include "Object.h"
++
++class Dict;
++class XRef;
++class OutputDev;
++class Links;
++class Catalog;
++class Annots;
++class Annot;
++
++//------------------------------------------------------------------------
++
++class PDFRectangle {
++public:
++  double x1, y1, x2, y2;
++
++  PDFRectangle() { x1 = y1 = x2 = y2 = 0; }
++  PDFRectangle(double x1A, double y1A, double x2A, double y2A)
++    { x1 = x1A; y1 = y1A; x2 = x2A; y2 = y2A; }
++  GBool isValid() { return x1 != 0 || y1 != 0 || x2 != 0 || y2 != 0; }
++};
++
++//------------------------------------------------------------------------
++// PageAttrs
++//------------------------------------------------------------------------
++
++class PageAttrs {
++public:
++
++  // Construct a new PageAttrs object by merging a dictionary
++  // (of type Pages or Page) into another PageAttrs object.  If
++  // <attrs> is NULL, uses defaults.
++  PageAttrs(PageAttrs *attrs, Dict *dict);
++
++  // Destructor.
++  ~PageAttrs();
++
++  // Accessors.
++  PDFRectangle *getBox() { return limitToCropBox ? &cropBox : &mediaBox; }
++  PDFRectangle *getMediaBox() { return &mediaBox; }
++  PDFRectangle *getCropBox() { return &cropBox; }
++  GBool isCropped() { return haveCropBox; }
++  PDFRectangle *getBleedBox() { return &bleedBox; }
++  PDFRectangle *getTrimBox() { return &trimBox; }
++  PDFRectangle *getArtBox() { return &artBox; }
++  int getRotate() { return rotate; }
++  GooString *getLastModified()
++    { return lastModified.isString()
++	? lastModified.getString() : (GooString *)NULL; }
++  Dict *getBoxColorInfo()
++    { return boxColorInfo.isDict() ? boxColorInfo.getDict() : (Dict *)NULL; }
++  Dict *getGroup()
++    { return group.isDict() ? group.getDict() : (Dict *)NULL; }
++  Stream *getMetadata()
++    { return metadata.isStream() ? metadata.getStream() : (Stream *)NULL; }
++  Dict *getPieceInfo()
++    { return pieceInfo.isDict() ? pieceInfo.getDict() : (Dict *)NULL; }
++  Dict *getSeparationInfo()
++    { return separationInfo.isDict()
++	? separationInfo.getDict() : (Dict *)NULL; }
++  Dict *getResourceDict()
++    { return resources.isDict() ? resources.getDict() : (Dict *)NULL; }
++
++private:
++
++  GBool readBox(Dict *dict, char *key, PDFRectangle *box);
++
++  PDFRectangle mediaBox;
++  PDFRectangle cropBox;
++  GBool haveCropBox;
++  GBool limitToCropBox;
++  PDFRectangle bleedBox;
++  PDFRectangle trimBox;
++  PDFRectangle artBox;
++  int rotate;
++  Object lastModified;
++  Object boxColorInfo;
++  Object group;
++  Object metadata;
++  Object pieceInfo;
++  Object separationInfo;
++  Object resources;
++};
++
++//------------------------------------------------------------------------
++// Page
++//------------------------------------------------------------------------
++
++class Page {
++public:
++
++  // Constructor.
++  Page(XRef *xrefA, int numA, Dict *pageDict, PageAttrs *attrsA);
++
++  // Destructor.
++  ~Page();
++
++  // Is page valid?
++  GBool isOk() { return ok; }
++
++  // Get page parameters.
++  PDFRectangle *getBox() { return attrs->getBox(); }
++  PDFRectangle *getMediaBox() { return attrs->getMediaBox(); }
++  PDFRectangle *getCropBox() { return attrs->getCropBox(); }
++  GBool isCropped() { return attrs->isCropped(); }
++  double getWidth() { return attrs->getBox()->x2 - attrs->getBox()->x1; }
++  double getHeight() { return attrs->getBox()->y2 - attrs->getBox()->y1; }
++  PDFRectangle *getBleedBox() { return attrs->getBleedBox(); }
++  PDFRectangle *getTrimBox() { return attrs->getTrimBox(); }
++  PDFRectangle *getArtBox() { return attrs->getArtBox(); }
++  int getRotate() { return attrs->getRotate(); }
++  GooString *getLastModified() { return attrs->getLastModified(); }
++  Dict *getBoxColorInfo() { return attrs->getBoxColorInfo(); }
++  Dict *getGroup() { return attrs->getGroup(); }
++  Stream *getMetadata() { return attrs->getMetadata(); }
++  Dict *getPieceInfo() { return attrs->getPieceInfo(); }
++  Dict *getSeparationInfo() { return attrs->getSeparationInfo(); }
++
++  // Get resource dictionary.
++  Dict *getResourceDict() { return attrs->getResourceDict(); }
++
++  // Get annotations array.
++  Object *getAnnots(Object *obj) { return annots.fetch(xref, obj); }
++
++  // Get contents.
++  Object *getContents(Object *obj) { return contents.fetch(xref, obj); }
++
++  // Get thumb.
++  Object *getThumb(Object *obj) { return thumb.fetch(xref, obj); }
++
++  // Display a page.
++  void display(OutputDev *out, double hDPI, double vDPI,
++	       int rotate, GBool crop,
++	       Links *links, Catalog *catalog,
++	       GBool (*abortCheckCbk)(void *data) = NULL,
++	       void *abortCheckCbkData = NULL,
++               GBool (*annotDisplayDecideCbk)(Annot *annot, void *user_data) = NULL,
++               void *annotDisplayDecideCbkData = NULL);
++
++  // Display part of a page.
++  void displaySlice(OutputDev *out, double hDPI, double vDPI,
++		    int rotate, GBool crop,
++		    int sliceX, int sliceY, int sliceW, int sliceH,
++		    Links *links, Catalog *catalog,
++		    GBool (*abortCheckCbk)(void *data) = NULL,
++		    void *abortCheckCbkData = NULL,
++                    GBool (*annotDisplayDecideCbk)(Annot *annot, void *user_data) = NULL,
++                    void *annotDisplayDecideCbkData = NULL);
++
++private:
++
++  XRef *xref;			// the xref table for this PDF file
++  int num;			// page number
++  PageAttrs *attrs;		// page attributes
++  Object annots;		// annotations array
++  Object contents;		// page contents
++  Object thumb;			// page thumbnail
++  GBool ok;			// true if page is valid
++};
++
++#endif
+diff -urN poppler/poppler-qt.pc.in poppler-qt/poppler-qt.pc.in
+--- poppler/poppler-qt.pc.in	1969-12-31 19:00:00.000000000 -0500
++++ poppler-qt/poppler-qt.pc.in	2005-03-16 23:06:08.000000000 -0500
+@@ -0,0 +1,11 @@
++prefix=@prefix@
++exec_prefix=@exec_prefix@
++libdir=@libdir@
++includedir=@includedir@
++
++Name: poppler-qt
++Description: Qt bindings for poppler
++Version: @VERSION@
++
++Libs: -L${libdir} -lpoppler-qt
++Cflags: -I${includedir}/poppler
+diff -urN poppler/qt/Makefile.am poppler-qt/qt/Makefile.am
+--- poppler/qt/Makefile.am	1969-12-31 19:00:00.000000000 -0500
++++ poppler-qt/qt/Makefile.am	2005-03-16 21:58:27.000000000 -0500
+@@ -0,0 +1,18 @@
++
++	
++if HAVE_QT
++INCLUDES=-I$(top_srcdir)/poppler $(POPPLER_QT_CXXFLAGS)
++
++lib_LTLIBRARIES=libpoppler-qt.la
++poppler_includedir = $(includedir)/poppler
++poppler_include_HEADERS =		\
++	poppler-qt.h
++
++libpoppler_qt_la_SOURCES = 			\
++	poppler-qt.cpp
++
++
++libpoppler_qt_la_LIBADD= $(POPPLER_QT_LIBS) $(top_builddir)/poppler/libpoppler.la
++libpoppler_qt_la_LDFLAGS= -version-info 1:0
++
++endif
+diff -urN poppler/qt/poppler-qt.cpp poppler-qt/qt/poppler-qt.cpp
+--- poppler/qt/poppler-qt.cpp	1969-12-31 19:00:00.000000000 -0500
++++ poppler-qt/qt/poppler-qt.cpp	2005-03-16 22:40:51.000000000 -0500
+@@ -0,0 +1,98 @@
++#include <poppler-qt.h>
++//------------------------------------------------------------------------
++// PageTransition
++//------------------------------------------------------------------------
++
++PageTransition::PageTransition(Object *dictObj)
++  : type(Replace),
++    duration(1),
++    alignment(Horizontal),
++    direction(Inward),
++    angle(0),
++    scale(1.0),
++    rectangular(false)
++{
++  Object obj;
++
++  if (dictObj->isDict()) {
++    Dict *transDict = dictObj->getDict();
++
++    if (transDict->lookup("S", &obj)->isName()) {
++      const char *s = obj.getName();
++      if (strcmp("R", s) == 0)
++        type = Replace;
++      else if (strcmp("Split", s) == 0)
++        type = Split;
++      else if (strcmp("Blinds", s) == 0)
++        type = Blinds;
++      else if (strcmp("Box", s) == 0)
++        type = Box;
++      else if (strcmp("Wipe", s) == 0)
++        type = Wipe;
++      else if (strcmp("Dissolve", s) == 0)
++        type = Dissolve;
++      else if (strcmp("Glitter", s) == 0)
++        type = Glitter;
++      else if (strcmp("Fly", s) == 0)
++        type = Fly;
++      else if (strcmp("Push", s) == 0)
++        type = Push;
++      else if (strcmp("Cover", s) == 0)
++        type = Cover;
++      else if (strcmp("Uncover", s) == 0)
++        type = Push;
++      else if (strcmp("Fade", s) == 0)
++        type = Cover;
++    }
++    obj.free();
++
++    if (transDict->lookup("D", &obj)->isInt()) {
++      duration = obj.getInt();
++    }
++    obj.free();
++
++    if (transDict->lookup("Dm", &obj)->isName()) {
++      const char *dm = obj.getName();
++      if ( strcmp( "H", dm ) == 0 )
++        alignment = Horizontal;
++      else if ( strcmp( "V", dm ) == 0 )
++        alignment = Vertical;
++    }
++    obj.free();
++
++    if (transDict->lookup("M", &obj)->isName()) {
++      const char *m = obj.getName();
++      if ( strcmp( "I", m ) == 0 )
++        direction = Inward;
++      else if ( strcmp( "O", m ) == 0 )
++        direction = Outward;
++    }
++    obj.free();
++
++    if (transDict->lookup("Di", &obj)->isInt()) {
++      angle = obj.getInt();
++    }
++    obj.free();
++
++    if (transDict->lookup("Di", &obj)->isName()) {
++      if ( strcmp( "None", obj.getName() ) == 0 )
++        angle = 0;
++    }
++    obj.free();
++
++    if (transDict->lookup("SS", &obj)->isReal()) {
++      scale = obj.getReal();
++    }
++    obj.free();
++
++    if (transDict->lookup("B", &obj)->isBool()) {
++      rectangular = obj.getBool();
++    }
++    obj.free();
++  }
++}
++
++PageTransition::~PageTransition() {
++}
++
++
+diff -urN poppler/qt/poppler-qt.h poppler-qt/qt/poppler-qt.h
+--- poppler/qt/poppler-qt.h	1969-12-31 19:00:00.000000000 -0500
++++ poppler-qt/qt/poppler-qt.h	2005-03-16 22:40:25.000000000 -0500
+@@ -0,0 +1,135 @@
++#ifndef POPPLER_QT_H
++#define POPPLER_QT_H
++
++#include <PDFDoc.h>
++#include <Catalog.h>
++#include <qvaluelist.h>
++
++//------------------------------------------------------------------------
++// PageTransition
++//------------------------------------------------------------------------
++class PageTransition {
++public:
++  enum Type {
++    Replace,
++    Split,
++    Blinds,
++    Box,
++    Wipe,
++    Dissolve,
++    Glitter,
++    Fly,
++    Push,
++    Cover,
++    Uncover,
++    Fade
++  };
++
++  enum Alignment {
++    Horizontal,
++    Vertical
++  };
++
++  enum Direction {
++    Inward,
++    Outward
++  };
++
++  // Construct a new PageTransition object from a page dictionary.
++  PageTransition( Object *dictObj );
++
++  // Destructor
++  ~PageTransition();
++
++  // Get type of the transition.
++  Type getType() const { return type; }
++
++  // Get duration of the transition in seconds.
++  int getDuration() const { return duration; }
++
++  // Get dimension in which the transition effect
++  // occurs.
++  Alignment getAlignment() const { return alignment; }
++
++  // Get direction of motion of the transition effect.
++  Direction getDirection() const { return direction; }
++
++  // Get direction in which the transition effect moves.
++  int getAngle() const { return angle; }
++
++  // Get starting or ending scale.
++  double getScale() const { return scale; }
++
++  // Returns true if the area to be flown is rectangular and
++  // opaque.
++  GBool isRectangular() const { return rectangular; }
++private:
++  Type type;
++  int duration;
++  Alignment alignment;
++  Direction direction;
++  int angle;
++  double scale;
++  GBool rectangular;
++};
++
++class QPDFDoc : public PDFDoc {
++  public:
++  enum PageMode {
++    UseNone,
++    UseOutlines,
++    UseThumbs,
++    FullScreen,
++    UseOC
++  };
++  
++  PageMode getPageMode()
++  {
++    Object catDict;
++    Object obj;
++    PageMode pageMode;
++    getXRef()->getCatalog(&catDict);
++    // read page mode
++    if (catDict.dictLookup("PageMode", &obj)->isName()) {
++      if (strcmp(obj.getName(), "UseNone") == 0)
++	pageMode = UseNone;
++      else if (strcmp(obj.getName(), "UseOutlines") == 0)
++	pageMode = UseOutlines;
++      else if (strcmp(obj.getName(), "UseThumbs") == 0)
++	pageMode = UseThumbs;
++      else if (strcmp(obj.getName(), "FullScreen") == 0)
++	pageMode = FullScreen;
++      else if (strcmp(obj.getName(), "UseOC") == 0)
++	pageMode = UseOC;
++    } else {
++      pageMode = UseNone;
++    }
++    obj.free();
++    catDict.free();
++    return pageMode;
++  }
++
++  PageTransition getPageTransition(int page)
++  {
++    Object obj;
++    PageTransition ret(getCatalog()->getPage(page)->getTrans(&obj));
++    obj.free();
++    return ret;
++  }
++  void displayPages(OutputDev *out, QValueList<int> pages,
++		    double hDPI, double vDPI, int rotate,
++		    GBool crop, GBool doLinks,
++		    GBool (*abortCheckCbk)(void *data) = NULL,
++		    void *abortCheckCbkData = NULL)
++  {
++    QValueList<int>::const_iterator i;
++    for (i = pages.begin(); i != pages.end(); ++i)
++      displayPage(out, *i, hDPI, vDPI, rotate, crop, doLinks,
++	  abortCheckCbk, abortCheckCbkData);
++  }
++
++  QPDFDoc(GooString *fileNameA, GooString *password) 
++    : PDFDoc(fileNameA, password, password) { }
++};
++
++#endif
+-------------- next part --------------
+? kpdf/other
+? kpdf/core/generator_pdf/.generator_pdf.h.swp
+Index: kpdf/Makefile.am
+===================================================================
+RCS file: /home/kde/kdegraphics/kpdf/Makefile.am,v
+retrieving revision 1.19
+diff -u -r1.19 Makefile.am
+--- kpdf/Makefile.am	7 Jan 2005 15:29:39 -0000	1.19
++++ kpdf/Makefile.am	17 Mar 2005 04:51:47 -0000
+@@ -1,6 +1,6 @@
+-SUBDIRS = xpdf conf core ui shell
++SUBDIRS = conf core ui shell
+ 
+-INCLUDES = -I$(srcdir)/xpdf -I$(srcdir)/xpdf/goo -I$(top_builddir)/kpdf $(all_includes) $(FREETYPE_CFLAGS)
++INCLUDES = $(POPPLER_CFLAGS) $(POPPLER_QT_CFLAGS) -I$(top_builddir)/kpdf $(all_includes) $(FREETYPE_CFLAGS)
+ 
+ METASOURCES = AUTO
+ 
+@@ -16,8 +16,8 @@
+ kde_module_LTLIBRARIES = libkpdfpart.la
+ 
+ libkpdfpart_la_SOURCES = dcop.skel error.cpp part.cpp
+-libkpdfpart_la_LDFLAGS = -module $(KDE_PLUGIN) $(all_libraries)
+-libkpdfpart_la_LIBADD  = xpdf/xpdf/libxpdf.la conf/libkpdfconf.la \
++libkpdfpart_la_LDFLAGS = -module $(KDE_PLUGIN) $(all_libraries) $(POPPLER_LIBS) $(POPPLER_QT_LIBS)
++libkpdfpart_la_LIBADD  = conf/libkpdfconf.la \
+                          core/libkpdfcore.la ui/libkpdfui.la $(LIB_KPARTS) \
+                          $(LIB_KFILE) $(LIB_KDEPRINT) $(LIB_KUTILS) -lm
+ 
+Index: kpdf/configure.in.in
+===================================================================
+RCS file: /home/kde/kdegraphics/kpdf/configure.in.in,v
+retrieving revision 1.20
+diff -u -r1.20 configure.in.in
+--- kpdf/configure.in.in	2 Mar 2005 18:32:39 -0000	1.20
++++ kpdf/configure.in.in	17 Mar 2005 04:51:47 -0000
+@@ -34,6 +34,8 @@
+ AC_SUBST(LIBFREETYPE_CFLAGS)
+ AC_SUBST(LIBFREETYPE_RPATH)
+ 
++PKG_CHECK_MODULES(POPPLER, poppler)
++PKG_CHECK_MODULES(POPPLER_QT, poppler-qt)
+ 
+ # Check for xft
+ KDE_FIND_PATH(xft-config, XFT_CONFIG, [${prefix}/bin ${exec_prefix}/bin /usr/local/bin /opt/local/bin],)
+Index: kpdf/error.cpp
+===================================================================
+RCS file: /home/kde/kdegraphics/kpdf/error.cpp,v
+retrieving revision 1.1
+diff -u -r1.1 error.cpp
+--- kpdf/error.cpp	2 Jan 2005 14:14:52 -0000	1.1
++++ kpdf/error.cpp	17 Mar 2005 04:51:47 -0000
+@@ -15,8 +15,8 @@
+ #include <stdio.h>
+ #include <stddef.h>
+ #include <stdarg.h>
+-#include "xpdf/GlobalParams.h"
+-#include "xpdf/Error.h"
++#include <GlobalParams.h>
++#include <Error.h>
+ 
+ #include <qstring.h>
+ 
+Index: kpdf/part.cpp
+===================================================================
+RCS file: /home/kde/kdegraphics/kpdf/part.cpp,v
+retrieving revision 1.32
+diff -u -r1.32 part.cpp
+--- kpdf/part.cpp	12 Mar 2005 15:58:47 -0000	1.32
++++ kpdf/part.cpp	17 Mar 2005 04:51:48 -0000
+@@ -51,8 +51,9 @@
+ #include <kxmlguifactory.h>
+ #include <ktrader.h>
+ 
++#include <GlobalParams.h>
++
+ // local includes
+-#include "xpdf/GlobalParams.h"
+ #include "part.h"
+ #include "ui/pageview.h"
+ #include "ui/thumbnaillist.h"
+Index: kpdf/core/Makefile.am
+===================================================================
+RCS file: /home/kde/kdegraphics/kpdf/core/Makefile.am,v
+retrieving revision 1.6
+diff -u -r1.6 Makefile.am
+--- kpdf/core/Makefile.am	12 Feb 2005 15:15:15 -0000	1.6
++++ kpdf/core/Makefile.am	17 Mar 2005 04:51:48 -0000
+@@ -1,6 +1,6 @@
+ SUBDIRS = generator_pdf
+ 
+-INCLUDES = -I$(srcdir)/generator_pdf -I$(srcdir)/.. -I$(srcdir)/../xpdf -I$(srcdir)/../xpdf/goo -I$(top_builddir)/kpdf $(all_includes)
++INCLUDES = -I$(srcdir)/generator_pdf -I$(srcdir)/.. $(POPPLER_CFLAGS) -I$(top_builddir)/kpdf $(all_includes)
+ 
+ METASOURCES = AUTO
+ 
+Index: kpdf/core/page.cpp
+===================================================================
+RCS file: /home/kde/kdegraphics/kpdf/core/page.cpp,v
+retrieving revision 1.20
+diff -u -r1.20 page.cpp
+--- kpdf/core/page.cpp	11 Feb 2005 22:29:22 -0000	1.20
++++ kpdf/core/page.cpp	17 Mar 2005 04:51:48 -0000
+@@ -12,13 +12,13 @@
+ #include <qstring.h>
+ #include <qmap.h>
+ #include <kdebug.h>
++#include <TextOutputDev.h>
+ 
+ // local includes
+ #include "page.h"
+ #include "pagetransition.h"
+ #include "link.h"
+ #include "conf/settings.h"
+-#include "xpdf/TextOutputDev.h"
+ 
+ 
+ /** class KPDFPage **/
+@@ -145,7 +145,7 @@
+         if ( strictCase )
+         {
+             // since we're in 'Case sensitive' mode, check if words are identical
+-            GString * realText = m_text->getText( sLeft, sTop, sRight, sBottom );
++            GooString * realText = m_text->getText( sLeft, sTop, sRight, sBottom );
+             found = QString::fromUtf8( realText->getCString() ) == text;
+             if ( !found && dir == FromTop )
+                 dir = NextMatch;
+@@ -167,7 +167,7 @@
+         top = (int)( rect.top * m_height ),
+         right = (int)( rect.right * m_width ),
+         bottom = (int)( rect.bottom * m_height );
+-    GString * text = m_text->getText( left, top, right, bottom );
++    GooString * text = m_text->getText( left, top, right, bottom );
+     QString result = QString::fromUtf8( text->getCString() );
+     delete text;
+     return result; 
+Index: kpdf/core/generator_pdf/Makefile.am
+===================================================================
+RCS file: /home/kde/kdegraphics/kpdf/core/generator_pdf/Makefile.am,v
+retrieving revision 1.4
+diff -u -r1.4 Makefile.am
+--- kpdf/core/generator_pdf/Makefile.am	5 Jan 2005 14:08:31 -0000	1.4
++++ kpdf/core/generator_pdf/Makefile.am	17 Mar 2005 04:51:48 -0000
+@@ -1,4 +1,4 @@
+-INCLUDES = -I$(srcdir)/../.. -I$(srcdir)/../../xpdf -I$(srcdir)/../../xpdf/goo -I$(srcdir)/../../xpdf/splash -I$(top_builddir)/kpdf $(all_includes)
++INCLUDES = -I$(srcdir)/../.. $(POPPLER_CFLAGS) -I$(top_builddir)/kpdf $(all_includes)
+ 
+ libgeneratorpdf_la_LDFLAGS = $(all_libraries)
+ libgeneratorpdf_la_SOURCES = generator_pdf.cpp gp_outputdev.cpp
+Index: kpdf/core/generator_pdf/generator_pdf.cpp
+===================================================================
+RCS file: /home/kde/kdegraphics/kpdf/core/generator_pdf/generator_pdf.cpp,v
+retrieving revision 1.26
+diff -u -r1.26 generator_pdf.cpp
+--- kpdf/core/generator_pdf/generator_pdf.cpp	5 Mar 2005 17:20:41 -0000	1.26
++++ kpdf/core/generator_pdf/generator_pdf.cpp	17 Mar 2005 04:51:48 -0000
+@@ -24,14 +24,15 @@
+ #include <kmessagebox.h>
+ #include <kdebug.h>
+ 
+-// xpdf includes
+-#include "xpdf/PSOutputDev.h"
+-#include "xpdf/TextOutputDev.h"
+-#include "xpdf/Link.h"
+-#include "xpdf/ErrorCodes.h"
+-#include "xpdf/UnicodeMap.h"
+-#include "xpdf/Outline.h"
+-#include "goo/GList.h"
++// poppler includes
++#include <PSOutputDev.h>
++#include <TextOutputDev.h>
++#include <Link.h>
++#include <ErrorCodes.h>
++#include <UnicodeMap.h>
++#include <Outline.h>
++#include <goo/GooList.h>
++#include <poppler-qt.h>
+ 
+ // local includes
+ #include "generator_pdf.h"
+@@ -98,7 +99,7 @@
+     }
+ #endif
+     // create PDFDoc for the given file
+-    pdfdoc = new PDFDoc( new GString( QFile::encodeName( filePath ) ), 0, 0 );
++    pdfdoc = new QPDFDoc( new GooString( QFile::encodeName( filePath ) ), 0 );
+ 
+     // if the file didn't open correctly it might be encrypted, so ask for a pass
+     bool firstInput = true;
+@@ -144,9 +145,9 @@
+         }
+ 
+         // 2. reopen the document using the password
+-        GString * pwd2 = new GString( password.data() );
++        GooString * pwd2 = new GooString( password.data() );
+             delete pdfdoc;
+-        pdfdoc = new PDFDoc( new GString( QFile::encodeName( filePath ) ), pwd2, pwd2 );
++        pdfdoc = new QPDFDoc( new GooString( QFile::encodeName( filePath ) ), pwd2 );
+             delete pwd2;
+ 
+         // 3. if the password is correct, store it to the wallet
+@@ -235,7 +236,7 @@
+     if ( !outline )
+         return NULL;
+ 
+-    GList * items = outline->getItems();
++    GooList * items = outline->getItems();
+     if ( !items || items->getLength() < 1 )
+         return NULL;
+ 
+@@ -363,27 +364,22 @@
+     }
+ 
+     KTempFile tf( QString::null, ".ps" );
+-    PSOutputDev *psOut = new PSOutputDev(tf.name().latin1(), pdfdoc->getXRef(), pdfdoc->getCatalog(), 1, pdfdoc->getNumPages(), psModePS);
++    PSOutputDev *psOut = new PSOutputDev((char*)tf.name().latin1(), pdfdoc->getXRef(), pdfdoc->getCatalog(), 1, pdfdoc->getNumPages(), psModePS);
+ 
+     if (psOut->isOk())
+     {
+-        std::list<int> pages;
+-
++	docLock.lock();
+         if (!printer.previewOnly())
+         {
+-            QValueList<int> pageList = printer.pageList();
+-            QValueList<int>::const_iterator it;
+-
+-            for(it = pageList.begin(); it != pageList.end(); ++it) pages.push_back(*it);
++	    pdfdoc->displayPages(psOut, printer.pageList(), 72, 72, 0, globalParams->getPSCrop(), gFalse);
+         }
+         else
+         {
+-            for(int i = 1; i <= pdfdoc->getNumPages(); i++) pages.push_back(i);
++            for(int i = 1; i <= pdfdoc->getNumPages(); i++)
++		    pdfdoc->displayPage(psOut, i, 72, 72, 0, globalParams->getPSCrop(), gFalse);
+         }
++	docLock.unlock();
+ 
+-        docLock.lock();
+-        pdfdoc->displayPages(psOut, pages, 72, 72, 0, globalParams->getPSCrop(), gFalse);
+-        docLock.unlock();
+ 
+         // needs to be here so that the file is flushed, do not merge with the one
+         // in the else
+@@ -403,7 +399,7 @@
+     if ( key == "StartFullScreen" )
+     {
+         // asking for the 'start in fullscreen mode' (pdf property)
+-        if ( pdfdoc->getCatalog()->getPageMode() == Catalog::FullScreen )
++        if ( pdfdoc->getPageMode() == QPDFDoc::FullScreen )
+             return "yes";
+     }
+     else if ( key == "NamedViewport" && !option.isEmpty() )
+@@ -411,7 +407,7 @@
+         // asking for the page related to a 'named link destination'. the
+         // option is the link name. @see addSynopsisChildren.
+         DocumentViewport viewport;
+-        GString * namedDest = new GString( option.latin1() );
++        GooString * namedDest = new GooString( option.latin1() );
+         docLock.lock();
+         LinkDest * destination = pdfdoc->findDest( namedDest );
+         if ( destination )
+@@ -481,13 +477,13 @@
+ 
+     QString result;
+     Object obj;
+-    GString *s1;
++    GooString *s1;
+     GBool isUnicode;
+     Unicode u;
+     int i;
+     Dict *infoDict = info.getDict();
+ 
+-    if ( infoDict->lookup( data.latin1(), &obj )->isString() )
++    if ( infoDict->lookup( (char*)data.latin1(), &obj )->isString() )
+     {
+         s1 = obj.getString();
+         if ( ( s1->getChar(0) & 0xff ) == 0xfe && ( s1->getChar(1) & 0xff ) == 0xff )
+@@ -545,7 +541,7 @@
+     if ( !uMap )
+         return i18n( "Unknown Date" );
+ 
+-    if ( infoDict->lookup( data.latin1(), &obj )->isString() )
++    if ( infoDict->lookup((char*) data.latin1(), &obj )->isString() )
+     {
+         s = obj.getString()->getCString();
+         if ( s[0] == 'D' && s[1] == ':' )
+@@ -570,7 +566,7 @@
+     return result;
+ }
+ 
+-void PDFGenerator::addSynopsisChildren( QDomNode * parent, GList * items )
++void PDFGenerator::addSynopsisChildren( QDomNode * parent, GooList * items )
+ {
+     int numItems = items->getLength();
+     for ( int i = 0; i < numItems; ++i )
+@@ -620,7 +616,7 @@
+ 
+         // 3. recursively descend over children
+         outlineItem->open();
+-        GList * children = outlineItem->getKids();
++        GooList * children = outlineItem->getKids();
+         if ( children )
+             addSynopsisChildren( &item, children );
+     }
+@@ -628,16 +624,12 @@
+ 
+ void PDFGenerator::addTransition( int pageNumber, KPDFPage * page )
+ {
+-    Page *pdfPage = pdfdoc->getCatalog()->getPage( pageNumber + 1 );
+-    if ( !pdfPage )
+-        return;
+-
+-    PageTransition *pdfTransition = pdfPage->getTransition();
+-    if ( !pdfTransition || pdfTransition->getType() == PageTransition::Replace )
++    PageTransition pdfTransition = pdfdoc->getPageTransition( pageNumber + 1 );
++    if (pdfTransition.getType() == PageTransition::Replace )
+         return;
+ 
+     KPDFPageTransition *transition = new KPDFPageTransition();
+-    switch ( pdfTransition->getType() ) {
++    switch ( pdfTransition.getType() ) {
+         case PageTransition::Replace:
+             // won't get here, added to avoid warning
+             break;
+@@ -676,9 +668,9 @@
+             break;
+     }
+ 
+-    transition->setDuration( pdfTransition->getDuration() );
++    transition->setDuration( pdfTransition.getDuration() );
+ 
+-    switch ( pdfTransition->getAlignment() ) {
++    switch ( pdfTransition.getAlignment() ) {
+         case PageTransition::Horizontal:
+             transition->setAlignment( KPDFPageTransition::Horizontal );
+             break;
+@@ -687,7 +679,7 @@
+             break;
+     }
+ 
+-    switch ( pdfTransition->getDirection() ) {
++    switch ( pdfTransition.getDirection() ) {
+         case PageTransition::Inward:
+             transition->setDirection( KPDFPageTransition::Inward );
+             break;
+@@ -696,9 +688,9 @@
+             break;
+     }
+ 
+-    transition->setAngle( pdfTransition->getAngle() );
+-    transition->setScale( pdfTransition->getScale() );
+-    transition->setIsRectangular( pdfTransition->isRectangular() == gTrue );
++    transition->setAngle( pdfTransition.getAngle() );
++    transition->setScale( pdfTransition.getScale() );
++    transition->setIsRectangular( pdfTransition.isRectangular() == gTrue );
+ 
+     page->setTransition( transition );
+ }
+Index: kpdf/core/generator_pdf/generator_pdf.h
+===================================================================
+RCS file: /home/kde/kdegraphics/kpdf/core/generator_pdf/generator_pdf.h,v
+retrieving revision 1.10
+diff -u -r1.10 generator_pdf.h
+--- kpdf/core/generator_pdf/generator_pdf.h	19 Feb 2005 12:23:14 -0000	1.10
++++ kpdf/core/generator_pdf/generator_pdf.h	17 Mar 2005 04:51:48 -0000
+@@ -19,8 +19,8 @@
+ #include "core/document.h"
+ #include "core/link.h"
+ 
+-class PDFDoc;
+-class GList;
++class QPDFDoc;
++class GooList;
+ class TextPage;
+ 
+ class ObjectRect;
+@@ -79,7 +79,7 @@
+         QString getDocumentInfo( const QString & data ) const;
+         QString getDocumentDate( const QString & data ) const;
+         // private function for creating the document synopsis hieracy
+-        void addSynopsisChildren( QDomNode * parent, GList * items );
++        void addSynopsisChildren( QDomNode * parent, GooList * items );
+         // private function for creating the transition information
+         void addTransition( int pageNumber, KPDFPage * page );
+         // (async related) receive data from the generator thread
+@@ -87,7 +87,7 @@
+ 
+         // xpdf dependant stuff
+         QMutex docLock;
+-        PDFDoc * pdfdoc;
++        QPDFDoc * pdfdoc;
+         KPDFOutputDev * kpdfOutputDev;
+         QColor paperColor;
+ 
+Index: kpdf/core/generator_pdf/gp_outputdev.cpp
+===================================================================
+RCS file: /home/kde/kdegraphics/kpdf/core/generator_pdf/gp_outputdev.cpp,v
+retrieving revision 1.9
+diff -u -r1.9 gp_outputdev.cpp
+--- kpdf/core/generator_pdf/gp_outputdev.cpp	10 Mar 2005 23:44:28 -0000	1.9
++++ kpdf/core/generator_pdf/gp_outputdev.cpp	17 Mar 2005 04:51:48 -0000
+@@ -28,10 +28,10 @@
+ #include "core/document.h" // for DocumentViewport
+ #include "core/page.h"
+ #include "core/link.h"
+-#include "xpdf/Link.h"
+-#include "xpdf/GfxState.h"
+-#include "xpdf/TextOutputDev.h"
+-#include "splash/SplashBitmap.h"
++#include <Link.h>
++#include <GfxState.h>
++#include <TextOutputDev.h>
++#include <splash/SplashBitmap.h>
+ 
+ //NOTE: XPDF/Splash *implementation dependant* code is marked with '###'
+ 
+@@ -296,7 +296,7 @@
+         case actionLaunch:
+             {
+             LinkLaunch * e = (LinkLaunch *)a;
+-            GString * p = e->getParams();
++            GooString * p = e->getParams();
+             link = new KPDFLinkExecute( e->getFileName()->getCString(), p ? p->getCString() : 0 );
+             }
+             break;
+@@ -352,7 +352,7 @@
+     return link;
+ }
+ 
+-DocumentViewport KPDFOutputDev::decodeViewport( GString * namedDest, LinkDest * dest )
++DocumentViewport KPDFOutputDev::decodeViewport( GooString * namedDest, LinkDest * dest )
+ // note: this function is called when processing a page, when the MUTEX is already LOCKED
+ {
+     DocumentViewport vp( -1 );
+Index: kpdf/core/generator_pdf/gp_outputdev.h
+===================================================================
+RCS file: /home/kde/kdegraphics/kpdf/core/generator_pdf/gp_outputdev.h,v
+retrieving revision 1.6
+diff -u -r1.6 gp_outputdev.h
+--- kpdf/core/generator_pdf/gp_outputdev.h	9 Feb 2005 17:51:58 -0000	1.6
++++ kpdf/core/generator_pdf/gp_outputdev.h	17 Mar 2005 04:51:48 -0000
+@@ -20,8 +20,8 @@
+ #endif
+ 
+ #include <qvaluelist.h>
+-#include "xpdf/PDFDoc.h" // for 'Object'
+-#include "xpdf/SplashOutputDev.h"
++#include <PDFDoc.h> // for 'Object'
++#include <SplashOutputDev.h>
+ 
+ class QPixmap;
+ class TextPage;
+@@ -80,7 +80,7 @@
+         // generate a valid KPDFLink subclass (or null) from a xpdf's LinkAction
+         KPDFLink * generateLink( LinkAction * a );
+         // fills up a Viewport structure out of a given LinkGoto link
+-        DocumentViewport decodeViewport( GString *, class LinkDest * );
++        DocumentViewport decodeViewport( GooString *, class LinkDest * );
+ 
+         // generator switches and parameters
+         bool m_qtThreadSafety;
