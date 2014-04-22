@@ -1,4 +1,4 @@
-PDFedit readme
+PDFedit5 readme
 ==============
 
 TOC
@@ -6,7 +6,7 @@ TOC
 License
 Contact
 Prerequisites
-	Base (kernel), pdfedit-core-dev package
+	Base (kernel), pdfedit5-core-dev package
 	Tests
 	Gui
 Documentation
@@ -28,7 +28,7 @@ PDFedit devel package
 
 License
 =======
-PDFedit is distributed under terms of GNU GPL in version 2.
+PDFedit5 is distributed under terms of GNU GPL in version 2.
 See doc/LICENSE.GPL for full license text.
 See doc/AUTHORS for full list of authors and contributors.
 For other more detailed documentation, look into "doc" subdirectory.
@@ -38,17 +38,11 @@ File doc/user/user_doc.html contain more detailed installation instructions
 
 Contact
 =======
-Feel free to contact us with any question via our public
-pdfedit5@lists.lsys.net mailing list. Note that you have to 
-be subscribed if you want to post messages to the list (subscription form
-is at http://lists.lsys.net/listinfo/pdfedit-support).
-Mailing list archive is public visible also without registration. Please 
-try to look into the archive before you post your question and append 
-an existing thread rather than create a new one.
+Feel free to contact me with any question via mail at info@danielripoll.me
 
 Prerequisites
 =============
-Base (kernel), pdfedit-code-dev package
+Base (kernel), pdfedit5-code-dev package, xcb
 ---------------------------------------
 Boost libraries must be installed. See detailed description about configure
 parameters if you have some unusual installation.
@@ -58,9 +52,8 @@ T1 font library is also recommended.
 Tests
 -----
 Unlike PDFedit, PDFEdit5 is still on development and and haven't been tested yet against CPPUNIT library,
-so don't blame if something didn't work.
-See detailed description about configure parameters if you have 
-some unusual installation.
+so don't blame if something didn't work. Indeed, nothing work at this right moment.
+See detailed description about configure parameters if you have some unusual installation.
 
 Tools
 -----
