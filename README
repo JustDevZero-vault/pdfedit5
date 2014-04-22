@@ -39,20 +39,12 @@ File doc/user/user_doc.html contain more detailed installation instructions
 Contact
 =======
 Feel free to contact us with any question via our public
-pdfedit-support@lists.sourceforge.net mailing list. Note that you have to 
+pdfedit5@lists.lsys.net mailing list. Note that you have to 
 be subscribed if you want to post messages to the list (subscription form
-is at https://lists.sourceforge.net/lists/listinfo/pdfedit-support).
+is at http://lists.lsys.net/listinfo/pdfedit-support).
 Mailing list archive is public visible also without registration. Please 
 try to look into the archive before you post your question and append 
 an existing thread rather than create a new one.
-
-If you want to be informed about important news you can register to the 
-pdfedit-news@lists.sourceforge.net mailing list. You can subscribe at
-https://lists.sourceforge.net/lists/listinfo/pdfedit-news
-
-All public mailing lists are listed at
-http://sourceforge.net/mail/?group_id=177354
-
 
 Prerequisites
 =============
@@ -65,8 +57,9 @@ T1 font library is also recommended.
 
 Tests
 -----
-Our tests are based on CPPUNIT library, so it has to be present on your 
-system. See detailed description about configure parameters if you have 
+Unlike PDFedit, PDFEdit5 is still on development and and haven't been tested yet against CPPUNIT library,
+so don't blame if something didn't work.
+See detailed description about configure parameters if you have 
 some unusual installation.
 
 Tools
@@ -80,13 +73,13 @@ installed.
 
 Gui
 ---
-Make sure you have all needed libraries (qt3, boost and xlib) along with their 
+Make sure you have all needed libraries (qt5, boost and xcb) along with their 
 headers. 
 You also need the environment variable QTDIR to be set to directory in which 
-the Qt toolkit (version 3) is installed. Many distributions already set this 
+the Qt toolkit (version 5) is installed. Many distributions already set this 
 when installing Qt, but some of them don't. In that case, you have to set the 
-QTDIR manually. Usually it is set to something like /usr/qt/3 or /usr/share/qt3
-(use e. g. export QTDIR=/usr/share/qt3 to set the variable if this is your 
+QTDIR manually. Usually it is set to something like /usr/lib/qt5 or /usr/share/qt5
+(use e. g. export QTDIR=/usr/share/qt35to set the variable if this is your 
 case).  
 Also, while usually not needed, QMAKESPEC may be set to match your system type.
 For most systems it is unnecessary to set it, although it may be needed if you
@@ -94,8 +87,8 @@ cross-compile (like producing i386 binaries on amd64 platform) or in some rare
 configurations. Once you set QTDIR, you may try typing "ls $QTDIR/mkspecs".
 QMAKESPEC should be set to name of one of the directories that are in mkspecs
 subdirectory in the Qt directory.
-See http://www.digitalfanatics.org/projects/qt_tutorial/chapter04.html or 
-http://doc.trolltech.com/3.0/qmake-guide.html for more information.
+See https://qt-project.org/wiki/Category:Tools or 
+http://qt-project.org/doc/qt-5/qmake-manual.html for more information.
 QTDIR is used also for qmake (tool for generating makefiles from QT project
 files) detection. By default, this is stored somewhere under QTDIR directory
 (typically QTDIR/bin/), but there are also platforms, where this is not 
@@ -127,8 +120,8 @@ There are 3 levels of documentation in this project.
 * advanced - design documentation which describes inner data 
 	    structures, algorithms and relations from the 
 	    programmer perspective. This one is useful if you
-	    want to develop PDFedit or 3rd party application based
-	    on PDFedit.
+	    want to develop PDFedit5 or 3rd party application based
+	    on PDFedit5.
 	    This documentation is not created by default too and
 	    you have to enable it by configure parameter 
 	    --enable-advanced-doc. We are using xml based docbook
@@ -142,8 +135,8 @@ Configuration
  Run:
   ./configure [parameters]
 
-NOTE for those who use sources from CVS. configure is NO MORE part of the
-CVS tree!!! You have to generate it. This can be done simply by
+NOTE for those who use sources from GIT. configure is NO MORE part of the
+GIT tree!!! You have to generate it. This can be done simply by
 $ autoconf
 in the root of the checkout project. Note that you have to have autoconf
 package installed on your machine.
@@ -192,7 +185,7 @@ uses this feature):
 	 turned on, some more debug information is added to the kernel code
 	 to enable debugging observers based code.
 
-	-gui - Creates GUI for PDFedit (pdfedit binary). Enabled by default. 
+	-gui - Creates GUI for PDFedit5 (pdfedit5 binary). Enabled by default. 
 	 If --disable-gui is used, no GUI (no pdfedit binary is created).
 	
 	-kernel-tests - Compiles all kernel tests (in src/kernel/tests). 
@@ -262,14 +255,14 @@ You can also control search paths for required libraries and binaries:
 		--with-boost-libdir=YOUR_BOOST_LIB_PATH 
 
 	- qmake is searched in $QTDIR/bin, /usr/bin, /usr/local/bin,
-	  /usr/lib/qt3/bin and in directories in $PATH. If you have
+	  /usr/lib/qt5/bin and in directories in $PATH. If you have
 	  qmake installed in other directory, use:
 	./configure --with-qmake=QMAKE_BINARY_WITH_PATH
 
 	- QT comes with lrelease binary which is used for 
 	  localization data files translation. This binary is
 	  searched in $QTDIR/bin, /usr/bin, /usr/local/bin,
-	  /usr/lib/qt3/bin and in directories in $PATH.
+	  /usr/lib/qt5/bin and in directories in $PATH.
 	  If it is not found on your system, please use
 	./configure --with-lrelease-bin=LRELEASE_BINARY_WITH_PATH
 
@@ -312,10 +305,10 @@ Documentation files are copied to PREFIX/share/pdfedit/doc, configuration
 files and scripts are copied to PREFIX/share/pdfedit and man page is
 copied to PREFIX/share/man/man1.
 
-If pdfedit-core-dev is configured, all relevant header files are copied into
-INCLUDEDIR/pdfedit-version (INCLUDEDIR=PREFIX/include by default), static
+If pdfedit5-core-dev is configured, all relevant header files are copied into
+INCLUDEDIR/pdfedit5-version (INCLUDEDIR=PREFIX/include by default), static
 libraries are copied into LIBDIR/pdfedit-version (LIBDIR=EPREFIX/lib by
-default) and pdfedit-core-dev-config script copied into the binary path as
+default) and pdfedit5-core-dev-config script copied into the binary path as
 described for PDFedit bunary.
 
 If you need to change installation root (e. g. if you are packager and
@@ -370,10 +363,10 @@ If you need (for what ever reason) to change or explicitly specify other than
 default compiler, you can do it during configuration phase by passing your
 compiler as CC and CXX configure parameters. The first one stands for c files 
 compiler while the second is used for c++ files.
-Lets say that we have gcc v 4.2 as default and want to compile with the newest
-gcc 4.3. Then you should do something like (name of compiler binary may
+Lets say that we have gcc v 4.7 as default and want to compile with the newest
+gcc 4.8.2. Then you should do something like (name of compiler binary may
 vary on different systems - this one is for Debian):
-	./configure CC=gcc-4.3 CXX=g++-4.3
+	./configure CC=gcc-4.8.2 CXX=g++-4.8.2
 
 Note that CFLAGS and CXXFLAGS which can be standardly passed to configure
 are ignored by our configure script.
@@ -406,13 +399,13 @@ Cygwin build
 PATH in cygwin must contain these three directories
 /bin			(most required executables are stashed here)
 /usr/X11R6/bin		(some libraries are here)
-/usr/lib/qt3/bin	(qmake must be in PATH)
+/usr/lib/qt5/bin	(qmake must be in PATH)
 
 You can use cygwin_build.bat to start the build process (you will need 
 to set CYGWIN_ROOT in the file first). This will create the package in 
-/tmp/pdfedit-package and create pack.bat to pack the package with 7-zip
+/tmp/pdfedit5-package and create pack.bat to pack the package with 7-zip
 
-Please note that we have received reports about PDFedit failing to compile
+Please note that the original authors from PDFedit have received reports about PDFedit failing to compile
 under some Cygwin releases. The problem turned out to be related to 
 implementation of c++ standard wrt. to some functions definitions (e.g. mkstemp)
 under Cygwin.
@@ -424,7 +417,7 @@ these problems.
 FreeBSD build
 =============
 Here is the short howto for PDFedit compilation and installation on FreeBSD 6.2 
-(Qt 3.38, Xorg 7.2). Thanks to Hao Chen.
+(Qt 3.38, Xorg 7.2). Thanks to Hao Chen. PDFedit5 is still not available in FreeBSD, but we left here as a legacy
 
 # untar current sources (this was done for 0.3.1 version)
 tar zxvf pdfedit-0.3.1.tar.bz2
@@ -442,14 +435,16 @@ setenv LOCALBASE /usr/local
 Our makefiles use some extensions of GNU make, so it is recomended to use
 gmake instead!
 
+
 NetBSD installation
 ===================
-Package for NetBSD is available on http://pkgsrc.se/wip/pdfedit
+Package for NetBSD for the old PDFedit is available on http://pkgsrc.se/wip/pdfedit
+As for PDFedit5 nothing is realeased yet
 
 
 Debian package
 ==============
-The package for the Debian is in testing branch at the moment. 
+We haven't already got any package or official repo, so please wait until the project is finished
 See http://packages.debian.org/unstable/utils/pdfedit
 
 The package for the Ubuntu can by found at 
@@ -464,38 +459,35 @@ First, install the packages necessary to build PDF Editor.
 
 Then, download the tarball from Sourceforge and extracted the files:
 
-$ tar -zxf pdfedit_0.4.1.tar.gz
+$ tar -zxf pdfedit_1.0.0.tar.gz
 
-Next, enter the pdfedit-0.4.1/ directory and run dh_make
+Next, enter the pdfedit-1.0.0/ directory and run dh_make
 
-$ cd pdfedit-0.4.1/
+$ cd pdfedit-1.0.0/
 $ dh_make --createorig
 
 Choose to create a single binary. After running dh_make, open the
-pdfedit-0.4.1/debian/rules file and comment out (#) line 48:
+pdfedit-1.0.0/debian/rules file and comment out (#) line 48:
 
 # $(MAKE) distclean
 
 Then, run:
 
-$ export QTDIR=/usr/share/qt3
+$ export QTDIR=/usr/share/qt5
 $ dpkg-buildpackage
 
 That creates the DEB package that you can install with:
 
-# dpkg -i pdfedit_0.4.1-1_i386.deb
+# dpkg -i pdfedit_1.0.0-1_i386.deb
 
 
 RPM based distros
 =================
-* OpenSUSE provides package via the Packman repository
-  (http://ftp.skynet.be/pub/packman/suse/10.3/)
-  Build service access - https://build.opensuse.org/package/show?package=pdfedit&project=KDE%3AKDE3
-* Package for Mandriva can be obtained from http://rpmlinux.org
+* We have nothing yet, so please wait. Also I develop mainly in Fedora, so you have a clue which distro will have first the package
 
 Gentoo package
 ==============
-Package is available on sunrise overlay repository
+Package is not yet on any repository, the old PDFedit is available on sunrise overlay repository
 which should be available in following way:
 
 emerge -va layman
@@ -512,9 +504,9 @@ directory is not searched by default. Therefore you have to set
 library path by hand with --with-boost-libdir=/usr/lib64.
 
 
-PDFedit devel package
+PDFedit5 devel package
 =====================
-PDFedit core functionality (read as non-gui) can be reused by 3rd party
+PDFedit5 core functionality (read as non-gui) can be reused by 3rd party
 applications. For this purpose, we have provided separate configuration
 options and installation targets as described above.
 If you want to use this package following steps are required:
@@ -529,9 +521,9 @@ If you want to use this package following steps are required:
 	LDFLAGS = $(shell pdfedit-core-dev-config --libs)
 
   - autoconf way
-    pdfedit source package comes with the config/pdfedit-core-dev.m4 autoconf
-    macro file which exports AX_PDFEDIT_CORE_DEV macro. Just call it and use
-    the exported variables PDFEDIT_CORE_DEV_CPPFLAGS and PDFEDIT_CODE_DEV_LDFLAGS 
+    pdfedit source package comes with the config/pdfedit5-core-dev.m4 autoconf
+    macro file which exports AX_PDFEDIT5_CORE_DEV macro. Just call it and use
+    the exported variables PDFEDIT5_CORE_DEV_CPPFLAGS and PDFEDIT5_CODE_DEV_LDFLAGS 
     in your Makefile. Read more about possible parameters directly in the file.
 * update your sources which are using pdfedit-core-dev:
 	- initialize library by:
@@ -543,6 +535,6 @@ If you want to use this package following steps are required:
 	before you call any PDFedit related code
 	- cleanup library stuff at the end when pdfedit-core-dev is no
 	  longer used by:
-	pdfedit_core_dev_destroy();
+	pdfedit5_core_dev_destroy();
         [See doxygen documentation for these functions for more information]
 
