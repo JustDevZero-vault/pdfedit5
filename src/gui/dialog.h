@@ -26,6 +26,7 @@
 
 #include <QtCore/QString>
 #include <QtGui/QColor>
+#include <QtWidgets/QWidget>
 
 class QWidget;
 

@@ -54,7 +54,7 @@
 #endif
 
 /** config directory name (will be used relative to $HOME) */
-#define CONFIG_DIR ".pdfedit"
+#define CONFIG_DIR ".pdfedit5"
 
 #endif
 

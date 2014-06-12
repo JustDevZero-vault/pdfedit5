@@ -31,6 +31,7 @@
 #include "util.h"
 #include "iconcache.h"
 #include "imagewidget.h"
+
 #include <QtWidgets/QFrame>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLayout>

@@ -24,10 +24,21 @@
 #ifndef __ADDITEMDIALOG_H__
 #define __ADDITEMDIALOG_H__
 
+#include <QtCore/QString>
+
+#include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QFrame>
+#include <QtWidgets/QRadioButton>
+#include <QtWidgets/QBoxLayout>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QWidget>
+
 #include "selfdestructivewidget.h"
-#include "qtcompat.h"
+
 #include <kernel/iproperty.h>
 #include <kernel/cobject.h>
+
 namespace pdfopbjects {
  class CPdf;
 }
@@ -35,7 +46,7 @@ namespace pdfopbjects {
 class QBoxLayout;
 class QFrame;
 class QRadioButton;
-class Q_ButtonGroup;
+class QButtonGroup;
 class QLineEdit;
 class QLabel;
 
@@ -94,7 +105,7 @@ private:
  /** Box holding buttons */
  QFrame *qbox;
  /** Group with content items */
- Q_ButtonGroup *items;
+ QButtonGroup *items;
  /** Label used to show message */
  QLabel *msg;
  /** Settings used to save dialog position (dict/array) - this is useful, as these can have different sizes */

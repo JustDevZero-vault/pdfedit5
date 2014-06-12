@@ -27,6 +27,7 @@
 #include <QtWidgets/QWidget>
 #include <QtWidgets/QLineEdit>
 #include <QtCore/QString>
+#include <QtGui/QResizeEvent>
 
 class QResizeEvent;
 
