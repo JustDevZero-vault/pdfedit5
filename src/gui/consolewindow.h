@@ -24,6 +24,9 @@
 #ifndef __CONSOLEWINDOW_H__
 #define __CONSOLEWINDOW_H__
 
+#include <QtCore/QString>
+#include <QtCore/QStringList>
+
 class QString;
 class QStringList;
 

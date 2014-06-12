@@ -29,6 +29,7 @@
 
 #include <QtCore/QMap>
 #include <QtCore/QString>
+#include <QtCore/QStringList>
 
 class QStringList;
 

@@ -24,6 +24,11 @@
 #ifndef __DIALOGOPTION_H__
 #define __DIALOGOPTION_H__
 
+#include <QtCore/QString>
+#include <QtWidgets/QPushButton>
+#include <QtWidgets/QLineEdit>
+#include <QtGui/QResizeEvent>
+
 #include "option.h"
 class QString;
 class QLineEdit;

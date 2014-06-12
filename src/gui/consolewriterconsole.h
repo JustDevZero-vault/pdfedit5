@@ -24,6 +24,8 @@
 #ifndef __CONSOLEWRITERCONSOLE_H__
 #define __CONSOLEWRITERCONSOLE_H__
 
+#include <QtCore/QString>
+
 #include "consolewriter.h"
 
 class QString;

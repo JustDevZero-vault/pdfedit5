@@ -24,9 +24,22 @@
 #ifndef __ANNOTDIALOG_H__
 #define __ANNOTDIALOG_H__
 
-#include "qtcompat.h"
+#include <QtWidgets/QGridLayout>
 #include <QtCore/QVariant>
-#include <qdialog.h>
+#include <QtWidgets/QFrame>
+#include <QtWidgets/QPushButton>
+#include <QtWidgets/QSpacerItem>
+#include <QtWidgets/QPushButton>
+#include <QtWidgets/QCheckBox>
+#include <QtWidgets/QComboBox>
+#include <QtWidgets/QTabWidget>
+#include <QtWidgets/QVBoxLayout>
+#include <QtWidgets/QHBoxLayout>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QWidget>
+#include <QtWidgets/QDialog>
+
 #include "qspage.h"
 #include "kernel/static.h"
 
@@ -37,7 +50,7 @@ class QSpacerItem;
 class QPushButton;
 class QTabWidget;
 class QWidget;
-class Q_GroupBox;
+class QButtonGroup;
 class QCheckBox;
 class QLabel;
 class QLineEdit;

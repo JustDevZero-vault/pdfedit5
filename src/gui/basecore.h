@@ -25,12 +25,16 @@
 #define __BASECORE_H__
 
 #include <QtCore/QObject>
+#include <QtCore/QString>
+
 #include <boost/shared_ptr.hpp>
 #include "qtcompat.h"
 #include QPTRDICT
+
 class QSProject;
 class QSInterpreter;
 class QString;
+
 namespace pdfobjects {
  class CPdf;
 }
