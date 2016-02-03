@@ -26,7 +26,7 @@
 #include <kernel/cpage.h>
 #include <splash/Splash.h>
 #include <splash/SplashBitmap.h>	
-#include <xpdf/SplashOutputDev.h>
+#include <poppler/poppler/SplashOutputDev.h>
 
 #include <boost/program_options.hpp>
 #include <vector>
