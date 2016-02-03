@@ -25,7 +25,7 @@
 #ifndef _FLATTENER_H_
 #define _FLATTENER_H_
 
-#include "kernel/xpdf.h"
+#include "kernel/poppler.h"
 #include "kernel/exceptions.h"
 #include "kernel/pdfwriter.h"
 

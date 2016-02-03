@@ -25,22 +25,22 @@
 
 #include "kernel/static.h"
 
-#include "kernel/xpdf.h"
+#include "kernel/poppler.h"
 #include "kernel/exceptions.h"
 
 //=====================================================================================
-namespace xpdf {
+namespace poppler {
 //=====================================================================================
 
 //
 //
 //
 void 
-freeXpdfObject (::Object* obj)
+freePopplerObject (::Object* obj)
 {
 	assert (obj != NULL);
 	if (NULL == obj)
-		throw XpdfInvalidObject ();
+        throw PopplerInvalidObject ();
 	
 	object_deleter d;
 	d(obj);
@@ -48,5 +48,5 @@ freeXpdfObject (::Object* obj)
 
 
 //=====================================================================================
-} // namespace xpdf
+} // namespace poppler
 //=====================================================================================

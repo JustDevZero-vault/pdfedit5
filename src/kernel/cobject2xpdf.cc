@@ -25,8 +25,8 @@
 
 // static
 #include "kernel/static.h"
-// xpdf
-#include "kernel/xpdf.h"
+// poppler
+#include "kernel/poppler.h"
 //
 #include "kernel/pdfspecification.h"
 #include "kernel/factories.h"
@@ -40,7 +40,7 @@ namespace utils {
 // =====================================================================================
 
 using namespace std;
-using namespace xpdf;
+using namespace poppler;
 using namespace boost;
 
 

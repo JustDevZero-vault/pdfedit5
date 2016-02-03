@@ -23,35 +23,35 @@
  */
 // vim:tabstop=4:shiftwidth=4:noexpandtab:textwidth=80
 
-#ifndef _XPDF_H_
-#define _XPDF_H_
+#ifndef _POPPLER_H_
+#define _POPPLER_H_
 
 
-#include <xpdf/Object.h>
-#include <xpdf/Parser.h>
-#include <xpdf/Lexer.h>
-#include <xpdf/Stream.h>
-#include <xpdf/XRef.h>
-#include <xpdf/Gfx.h>
-#include <xpdf/GfxState.h>
-#include <xpdf/GfxFont.h>
-#include <xpdf/ErrorCodes.h>
-#include <xpdf/Page.h>
-#include <xpdf/TextOutputDev.h>
-#include <xpdf/SplashOutputDev.h>
-#include <xpdf/BuiltinFontTables.h>
+#include <poppler/poppler/Object.h>
+#include <poppler/poppler/Parser.h>
+#include <poppler/poppler/Lexer.h>
+#include <poppler/poppler/Stream.h>
+#include <poppler/poppler/XRef.h>
+#include <poppler/poppler/Gfx.h>
+#include <poppler/poppler/GfxState.h>
+#include <poppler/poppler/GfxFont.h>
+#include <poppler/poppler/ErrorCodes.h>
+#include <poppler/poppler/Page.h>
+#include <poppler/poppler/TextOutputDev.h>
+#include <poppler/poppler/SplashOutputDev.h>
+#include <poppler/poppler/BuiltinFontTables.h>
 // Note that GlobalParams::initGlobalParams has to be called before
 // we can use globalParams.
 // If we want to use fonts correctly, globalParams->setupBaseFonts(NULL)
 // has to be called
-#include <xpdf/GlobalParams.h>
-#include <xpdf/Catalog.h>
+#include <poppler/poppler/GlobalParams.h>
+#include <poppler/poppler/Catalog.h>
 
 #include <assert.h>
 
 
 //=====================================================================================
-namespace xpdf {
+namespace poppler {
 //=====================================================================================
 
 /** Reference comparator class.
@@ -82,7 +82,7 @@ public:
 };
 
 /**
- * Xpdf object deleter.
+ * Poppler object deleter.
  */
 struct object_deleter
 {
@@ -98,11 +98,11 @@ struct object_deleter
  * 
  * @param obj Object to be freed.
  */
-void freeXpdfObject (::Object* obj);
+void freePopplerObject (::Object* obj);
 
 
 //=====================================================================================
-} // namespace xpdf
+} // namespace poppler
 //=====================================================================================
 
-#endif // _XPDF_H_
+#endif // _POPPLER_H_
