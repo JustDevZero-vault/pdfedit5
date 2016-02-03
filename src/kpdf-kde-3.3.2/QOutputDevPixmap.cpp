@@ -21,7 +21,7 @@
 #endif
 
 #include <stdlib.h>
-#include <xpdf/GfxState.h>
+#include <poppler/poppler/GfxState.h>
 
 #include <qpixmap.h>
 #include <qimage.h>
