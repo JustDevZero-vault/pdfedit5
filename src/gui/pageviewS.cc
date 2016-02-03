@@ -31,7 +31,7 @@
 #include "utils/debug.h"
 #include "kernel/pdfoperators.h"
 
-#include "xpdf/OutputDev.h"
+#include "poppler/poppler/OutputDev.h"
 #include "QOutputDevPixmap.h"
 
 #include "rect2Darray.h"

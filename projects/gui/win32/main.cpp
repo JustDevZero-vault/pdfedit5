@@ -6,16 +6,16 @@
 #include "widgets.h"
 #include "memory.h"
 
-// xpdf, pdfedit
+// poppler, pdfedit
 #define NO_CMAP
-#include "xpdf/GlobalParams.h"
+#include "poppler/poppler/GlobalParams.h"
 #undef NO_CMAP
 #include "kernel/pdfedit-core-dev.h"
 #include "kernel/cpdf.h"	
 #include "kernel/cpage.h"	
 #include "splash/Splash.h"	
 #include "splash/SplashBitmap.h"	
-#include "xpdf/SplashOutputDev.h"	
+#include "poppler/poppler/SplashOutputDev.h"
 
 
 namespace {

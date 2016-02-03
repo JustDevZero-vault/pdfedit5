@@ -26,7 +26,7 @@
 */
 #include "pdfeditwindow.h"
 #include "qtcompat.h"
-#include "xpdf/GlobalParams.h"
+#include "poppler/poppler/GlobalParams.h"
 #include "additemdialog.h"
 #include "basegui.h"
 #include "commandwindow.h"
