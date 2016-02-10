@@ -19,7 +19,7 @@
 #pragma implementation
 #endif
 
-#include "poppler/poppler/TextOutputDev.h"
+#include <poppler/TextOutputDev.h>
 
 #include "QOutputDev.h"
 

@@ -27,25 +27,25 @@
 #define _POPPLER_H_
 
 
-#include <poppler/poppler/Object.h>
-#include <poppler/poppler/Parser.h>
-#include <poppler/poppler/Lexer.h>
-#include <poppler/poppler/Stream.h>
-#include <poppler/poppler/XRef.h>
-#include <poppler/poppler/Gfx.h>
-#include <poppler/poppler/GfxState.h>
-#include <poppler/poppler/GfxFont.h>
-#include <poppler/poppler/ErrorCodes.h>
-#include <poppler/poppler/Page.h>
-#include <poppler/poppler/TextOutputDev.h>
-#include <poppler/poppler/SplashOutputDev.h>
-#include <poppler/poppler/BuiltinFontTables.h>
+#include <poppler/Object.h>
+#include <poppler/Parser.h>
+#include <poppler/Lexer.h>
+#include <poppler/Stream.h>
+#include <poppler/XRef.h>
+#include <poppler/Gfx.h>
+#include <poppler/GfxState.h>
+#include <poppler/GfxFont.h>
+#include <poppler/ErrorCodes.h>
+#include <poppler/Page.h>
+#include <poppler/TextOutputDev.h>
+#include <poppler/SplashOutputDev.h>
+#include <poppler/BuiltinFontTables.h>
 // Note that GlobalParams::initGlobalParams has to be called before
 // we can use globalParams.
 // If we want to use fonts correctly, globalParams->setupBaseFonts(NULL)
 // has to be called
-#include <poppler/poppler/GlobalParams.h>
-#include <poppler/poppler/Catalog.h>
+#include <poppler/GlobalParams.h>
+#include <poppler/Catalog.h>
 
 #include <assert.h>
 

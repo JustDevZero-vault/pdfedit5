@@ -27,12 +27,12 @@
 #include <kernel/delinearizator.h>
 #include <boost/program_options.hpp>
 #include <vector>
-#include <xpdf-aconf.h>
+#include <poppler/poppler-config.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <stddef.h>
 #include <string.h>
-#include "xpdf/ImageOutputDev.h"
+#include <poppler/utils/ImageOutputDev.h>
 
 using namespace pdfobjects;
 using namespace std;

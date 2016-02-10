@@ -24,7 +24,7 @@
 #ifndef __PDFEDIT_CORE_DEV_H__
 #define __PDFEDIT_CORE_DEV_H__
 
-#include "poppler/poppler/GlobalParams.h"
+#include <poppler/GlobalParams.h>
 
 /**
  * @param cfgFileName Configuration file name used by xpdf core for parameters

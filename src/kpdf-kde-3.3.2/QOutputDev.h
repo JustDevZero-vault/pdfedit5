@@ -19,8 +19,8 @@
 #pragma interface
 #endif
 
-#include "poppler/poppler/XRef.h"
-#include "poppler/poppler/SplashOutputDev.h"
+#include <poppler/XRef.h>
+#include <poppler/SplashOutputDev.h>
 
 class TextPage;
 

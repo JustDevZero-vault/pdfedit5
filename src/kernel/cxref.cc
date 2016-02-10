@@ -23,7 +23,7 @@
  */
 // vim:tabstop=4:shiftwidth=4:noexpandtab:textwidth=80
 #include "kernel/static.h"
-#include "poppler/poppler/Object.h"
+#include <poppler/Object.h>
 //#include "xpdf/encrypt_utils.h"      // where the file
 #include "kernel/cxref.h"
 #include "utils/debug.h"

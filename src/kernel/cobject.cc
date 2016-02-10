@@ -26,7 +26,7 @@
 // static
 #include "kernel/static.h"
 // xpdf
-#include "kernel/xpdf.h"
+#include "kernel/poppler.h"
 //
 #include "kernel/pdfspecification.h"
 #include "kernel/cobject.h"
